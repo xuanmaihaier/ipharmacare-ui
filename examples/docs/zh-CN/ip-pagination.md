@@ -1,10 +1,10 @@
 ## ip-pagination 分页
 
-针对逸曜Vue2项目二次封装的通用分页器,箭头修改为上一页，下一页，并增加首页与末页逻辑
+针对逸曜Vue2项目二次封装的通用分页器,箭头修改为上一页，下一页，增加首页与末页逻辑，并针对超长数据导致的的页码溢出父容器进行优化，此组件额外导出方法frist-click和last-click。
 
 ### 基础用法
 
-:::demo 设置`layout`，表示需要显示的内容，用逗号分隔，(业务在基础上增加了frist,last按钮表示首页和末页)，布局元素会依次显示。`frist`表示首页，`last`表示末页，`prev`表示上一页，`next`为下一页，`pager`表示页码列表，除此以外还提供了`jumper`和`total`，`size`和特殊的布局符号`->`，`->`后的元素会靠右显示，`jumper`表示跳页元素，`total`表示总条目数，`size`用于设置每页显示的页码数量，此组件额外导出方法frist-click和last-click。
+:::demo 设置`layout`，表示需要显示的内容，用逗号分隔，(业务在基础上增加了frist,last按钮表示首页和末页)，布局元素会依次显示。`frist`表示首页，`last`表示末页，`prev`表示上一页，`next`为下一页，`pager`表示页码列表，除此以外还提供了`jumper`和`total`，`size`和特殊的布局符号`->`，`->`后的元素会靠右显示，`jumper`表示跳页元素，`total`表示总条目数，`size`用于设置每页显示的页码数量。
 ```html
 <template>
 <div class="block">
@@ -17,10 +17,10 @@
   </ip-pagination>
 </div>
 <div class="block">
-  <span class="demonstration">大于 7 页时的效果</span>
+  <span class="demonstration">页数较多时的效果</span>
   <ip-pagination
     layout='total, ->, sizes, frist, prev, pager, next, last, jumper'
-    :total="1000">
+    :total="10000">
   </ip-pagination>
 </div>
 </template>

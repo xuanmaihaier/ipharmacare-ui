@@ -133,7 +133,7 @@
             array.push(i);
           }
         } else if (showPrevMore && showNextMore) {
-          const offset = Math.floor(pagerCount / 2) - 1;
+          const offset = pageCount >= 300 ? Math.floor(pagerCount / 2) - 2 : Math.floor(pagerCount / 2) - 1;
           for (let i = currentPage - offset ; i <= currentPage + offset; i++) {
             array.push(i);
           }
@@ -145,7 +145,6 @@
 
         this.showPrevMore = showPrevMore;
         this.showNextMore = showNextMore;
-
         return array;
       }
     },
