@@ -311,6 +311,20 @@
           ]
         }
       ]
+    },
+    {
+      "name": "逸曜业务组件",
+      "groups": [
+        {
+          "groupName": "Form",
+          "list": [
+            {
+              "path": "/ip-pagination",
+              "title": "Pagination 分页"
+            }
+          ]
+        }
+      ]
     }
   ],
   "en-US": [

@@ -22,8 +22,8 @@
 
 ```javascript
 import Vue from 'vue';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'web-vue2-front-end-lib';
+// 项目大部分使用了样式包本地化 这里删除了样式的引入
 import App from './App.vue';
 
 Vue.use(ElementUI);
@@ -55,7 +55,7 @@ npm install babel-plugin-component -D
     [
       "component",
       {
-        "libraryName": "element-ui",
+        "libraryName": "web-vue2-front-end-lib",
         "styleLibraryName": "theme-chalk"
       }
     ]
@@ -67,7 +67,7 @@ npm install babel-plugin-component -D
 
 ```javascript
 import Vue from 'vue';
-import { Button, Select } from 'element-ui';
+import { Button, Select } from 'web-vue2-front-end-lib';
 import App from './App.vue';
 
 Vue.component(Button.name, Button);
@@ -260,7 +260,7 @@ Vue.prototype.$message = Message;
 
 ```js
 import Vue from 'vue';
-import Element from 'element-ui';
+import Element from 'web-vue2-front-end-lib';
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 ```
 
@@ -268,7 +268,7 @@ Vue.use(Element, { size: 'small', zIndex: 3000 });
 
 ```js
 import Vue from 'vue';
-import { Button } from 'element-ui';
+import { Button } from 'web-vue2-front-end-lib';
 
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
 Vue.use(Button);
