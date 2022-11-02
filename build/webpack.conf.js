@@ -61,6 +61,10 @@ module.exports = {
             preserveWhitespace: false
           }
         }
+      },
+      {
+        test: /\.scss$/,
+        use: ['css-loader', 'sass-loader']
       }
     ]
   },
