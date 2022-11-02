@@ -1,3 +1,5 @@
+  <!-- 二次封装的规范 不涉及修改的的proxy 用v-bind="_attrs" 解构$attrs可以全部绑定 不涉及重写方法使用v-on='$listeners' 可以省去每一个都去emit 组件内部的样式 已经在webpack增加打包sass的配置，在组件内部写即可,插槽也可以暴露，该组件暂时不涉及 -->
+  <!-- https://blog.csdn.net/qq_42365082/article/details/125144676 -->
 <template>
   <div ref='changePaginationDom'>
     <ElPagination ref="pagination" v-bind="_attrs" :total="total" :currentPage='currentPage' :pageSizes='pageSizes'
