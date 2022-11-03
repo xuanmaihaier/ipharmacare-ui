@@ -1,12 +1,5 @@
   <!-- 二次封装的规范 不涉及修改的的proxy 用v-bind="_attrs" 解构$attrs可以全部绑定 不涉及重写方法使用v-on='$listeners' 可以省去每一个都去emit 组件内部的样式 已经在webpack增加打包sass的配置，在组件内部写即可,插槽也可以暴露，该组件暂时不涉及 -->
   <!-- https://blog.csdn.net/qq_42365082/article/details/125144676 -->
-<template>
-  <div ref='changePaginationDom'>
-    <ElPagination ref="pagination" v-bind="_attrs" :total="total" :currentPage='currentPage' :pageSizes='pageSizes'
-      :pageSize='pageSize' :layout='layout' @size-change='sizeChange' @current-change='currentChange'
-      @prev-click="prevClick" @next-click="nextClick" />
-  </div>
-</template>
 <script>
 import ElPagination from 'element-ui/packages/pagination';
 export default {
@@ -40,13 +33,7 @@ export default {
     pageChange() {
       const { pageSize, currentPage, total } = this;
       return { pageSize, currentPage, total };
-    },
-
-    _attrs() {
-      let attrs = { ...this.$attrs };
-      return attrs;
     }
-
   },
   methods: {
     sizeChange(pageSize) {
@@ -123,6 +110,48 @@ export default {
       deep: true,
       immediate: true
     }
+  },
+  render(h) {
+    const Pagination = h(
+      'el-pagination',
+      {
+        ref: 'pagination',
+        props: {
+          ...this.$attrs,
+          total: this.total, // 分页总数
+          currentPage: this.currentPage, // 当前页码
+          pageSize: this.pageSize, // 当前页数量
+          layout: this.layout,
+          pageSizes: this.pageSizes
+        },
+        // attrs: { align: 'right' },
+        on: {
+          'size-change': pageSize => {
+            // size-change事件时currentPage 赋值为1，避免el-pagination某些场景调用两次查询方法，比如，共有29条数据，每页20条，切换到第二页的时候展示了9条，这是size-change调整为30，此时第二页其实没有数据，el-pagination会再次调用查询方法，page传1
+            this.pageSize = pageSize;
+            this.currentPage = 1;
+            this.$emit('size-change', this.pageSize);
+
+            // 如需使用下列格式 需要在mixin中修改e.page 因为默认是传一个参数
+            // this.$emit('size-change', {
+            //   page: this.currentPage,
+            //   size: this.pageSize
+            // })
+          },
+          'current-change': curPage => {
+            this.currentPage = curPage;
+            this.$emit('current-change', this.currentPage);
+
+            // 如需使用下列格式 需要在mixin中修改e.page 因为默认是传一个参数
+            // this.$emit('current-change', {
+            //   page: this.currentPage,
+            //   size: this.pageSize
+            // })
+          }
+        }
+      }
+    );
+    return (<div ref='changePaginationDom'>{Pagination}</div>);
   }
 };
 </script>

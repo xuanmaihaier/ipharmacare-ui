@@ -113,4 +113,8 @@ export default {
         }
     }
 }
+.page-container-style {
+  background: #fff;
+  box-shadow: 0 0 6px 0 rgba(40, 50, 57, 0.1);
+}
 </style>
