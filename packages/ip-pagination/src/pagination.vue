@@ -131,22 +131,18 @@ export default {
             this.pageSize = pageSize;
             this.currentPage = 1;
             this.$emit('size-change', this.pageSize);
-
-            // 如需使用下列格式 需要在mixin中修改e.page 因为默认是传一个参数
-            // this.$emit('size-change', {
-            //   page: this.currentPage,
-            //   size: this.pageSize
-            // })
           },
           'current-change': curPage => {
             this.currentPage = curPage;
             this.$emit('current-change', this.currentPage);
-
-            // 如需使用下列格式 需要在mixin中修改e.page 因为默认是传一个参数
-            // this.$emit('current-change', {
-            //   page: this.currentPage,
-            //   size: this.pageSize
-            // })
+          },
+          'prev-click': curPage => {
+            this.currentPage = curPage;
+            this.$emit('prev-click', this.currentPage);
+          },
+          'next-click': curPage => {
+            this.currentPage = curPage;
+            this.$emit('next-click', this.currentPage);
           }
         }
       }
