@@ -42,9 +42,6 @@ const webpackConfig = {
         options: {
           compilerOptions: {
             preserveWhitespace: false
-          },
-          loaders: {
-            'css': ['vue-style-loader', 'style-loader', 'css-loader']
           }
         }
       },
@@ -54,7 +51,7 @@ const webpackConfig = {
       },
       {
         test: /\.scss$/,
-        loaders: ['css-loader', 'sass-loader']
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.(svg|otf|ttf|woff2?|eot|gif|png|jpe?g)(\?\S*)?$/,

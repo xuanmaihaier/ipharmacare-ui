@@ -59,15 +59,12 @@ module.exports = {
         options: {
           compilerOptions: {
             preserveWhitespace: false
-          },
-          loaders: {
-            'css': ['vue-style-loader', 'style-loader', 'css-loader']
           }
         }
       },
       {
         test: /\.scss$/,
-        loaders: ['css-loader', 'sass-loader']
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
