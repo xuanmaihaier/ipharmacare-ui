@@ -42,6 +42,9 @@ const webpackConfig = {
         options: {
           compilerOptions: {
             preserveWhitespace: false
+          },
+          loaders: {
+            'css': ['vue-style-loader', 'style-loader', 'css-loader']
           }
         }
       },
