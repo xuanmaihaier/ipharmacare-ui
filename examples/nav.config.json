@@ -321,6 +321,9 @@
             {
               "path": "/ip-pagination",
               "title": "Pagination 分页"
+            },{
+              "path": "/ip-tree",
+              "title": "tree 树组件"
             }
           ]
         }
