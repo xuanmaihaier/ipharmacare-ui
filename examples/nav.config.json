@@ -316,14 +316,19 @@
       "name": "逸曜业务组件",
       "groups": [
         {
-          "groupName": "Form",
+          "groupName": "Data",
           "list": [
             {
               "path": "/ip-pagination",
-              "title": "Pagination 分页"
-            },{
-              "path": "/ip-tree",
-              "title": "tree 树组件"
+              "title": "IpPagination 分页"
+            }
+          ]
+        },{
+          "groupName": "Form",
+          "list": [
+            {
+              "path": "/ip-search-container",
+              "title": "IpsearchContainer 搜索"
             }
           ]
         }

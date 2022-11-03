@@ -89,6 +89,7 @@ import Descriptions from '../packages/descriptions/index.js';
 import DescriptionsItem from '../packages/descriptions-item/index.js';
 import Result from '../packages/result/index.js';
 import IpPagination from '../packages/ip-pagination/index.js';
+import IpSearchContainer from '../packages/ip-search-container/index.js';
 import locale from 'element-ui/src/locale';
 import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
 
@@ -177,6 +178,7 @@ const components = [
   DescriptionsItem,
   Result,
   IpPagination,
+  IpSearchContainer,
   CollapseTransition
 ];
 
@@ -212,7 +214,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.0.4',
+  version: '1.0.16',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -305,5 +307,6 @@ export default {
   Descriptions,
   DescriptionsItem,
   Result,
-  IpPagination
+  IpPagination,
+  IpSearchContainer
 };

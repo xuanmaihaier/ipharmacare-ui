@@ -50,6 +50,10 @@ const webpackConfig = {
         loaders: ['style-loader', 'css-loader']
       },
       {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
         test: /\.(svg|otf|ttf|woff2?|eot|gif|png|jpe?g)(\?\S*)?$/,
         loader: 'url-loader',
         query: {
