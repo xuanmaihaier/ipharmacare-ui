@@ -1,25 +1,24 @@
 <template>
-    <!-- 搜索条件 -->
-    <div class="search-box page-container-style" :class="{ 'noExtend': (!hasExtendBtn || hasExtendBtn && !isExtend) }">
-        <el-form ref="searchForm" label-position="right" label-width="85px" @keyup.enter.native="$emit('search')"
-            @submit.native.prevent>
-            <el-row :gutter="20">
-                <slot name="search-default"></slot>
-                <slot name="search-extend" v-if="isExtend"></slot>
-                <el-col :span="isExtend ? 24 : 6">
-                    <el-form-item class="operationItem" label-width="0px"
-                        :style="`text-align:${isExtend ? 'right' : 'left'}`">
-                        <el-button v-if="hasExtendBtn" type="text" :icon="
-                            isExtend
-                                ? 'el-icon-arrow-up'
-                                : 'el-icon-arrow-down'
-                        " @click="operationExtend">{{ isExtend ? "收起" : "更多" }}</el-button>
-                        <slot name="search-operation"></slot>
-                    </el-form-item>
-                </el-col>
-            </el-row>
-        </el-form>
-    </div>
+  <!-- 搜索条件 -->
+  <div class="search-box page-container-style" :class="{ 'noExtend': (!hasExtendBtn || hasExtendBtn && !isExtend) }">
+    <el-form ref="searchForm" label-position="right" label-width="85px" @keyup.enter.native="$emit('search')"
+      @submit.native.prevent>
+      <el-row :gutter="20">
+        <slot name="search-default"></slot>
+        <slot name="search-extend" v-if="isExtend"></slot>
+        <el-col :span="isExtend ? 24 : 6">
+          <el-form-item class="operationItem" label-width="0px" :style="`text-align:${isExtend ? 'right' : 'left'}`">
+            <el-button v-if="hasExtendBtn" type="text" :icon="
+              isExtend
+                ? 'el-icon-arrow-up'
+                : 'el-icon-arrow-down'
+            " @click="operationExtend">{{ isExtend ? "收起" : "更多" }}</el-button>
+            <slot name="search-operation"></slot>
+          </el-form-item>
+        </el-col>
+      </el-row>
+    </el-form>
+  </div>
 </template>
 
 <script>
@@ -76,43 +75,55 @@ export default {
 
 <style scoped lang="scss">
 .search-box {
+  background: #fff;
+  padding: 10px 10px 2px 10px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 
-    &.noExtend {
+  &.noExtend {
 
-        padding-bottom: 10px;
+    padding-bottom: 10px;
 
-        /deep/ .el-form {
-            .el-row {
-                display: flex;
-                flex-wrap: wrap;
-
-                .el-col {
-                    .el-form-item {
-                        margin-bottom: 0px;
-                    }
-                }
-            }
-        }
-
-    }
-
-    /deep/ .el-form {
+    ::v-deep {
+      .el-form {
         .el-row {
-            display: flex;
-            flex-wrap: wrap;
+          display: flex;
+          flex-wrap: wrap;
 
-            .el-col {
-                .el-form-item:not(.operationItem) {
-                    .el-form-item__content {
-                        &>* {
-                            width: 100% !important;
-                        }
-                    }
-                }
+          .el-col {
+            .el-form-item {
+              margin-bottom: 0px;
             }
+          }
         }
+      }
     }
+
+
+
+  }
+
+  ::v-deep {
+    .el-form {
+      .el-row {
+        display: flex;
+        flex-wrap: wrap;
+
+        .el-col {
+          .el-form-item:not(.operationItem) {
+            .el-form-item__content {
+              &>* {
+                width: 100% !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
 .page-container-style {
   background: #fff;
   box-shadow: 0 0 6px 0 rgba(40, 50, 57, 0.1);
