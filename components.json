@@ -88,5 +88,6 @@
   "descriptions-item": "./packages/descriptions-item/index.js",
   "result": "./packages/result/index.js",
   "ip-pagination": "./packages/ip-pagination/index.js",
-  "ip-search-container": "./packages/ip-search-container/index.js"
+  "ip-search-container": "./packages/ip-search-container/index.js",
+  "ip-file-download": "./packages/ip-file-download/index.js"
 }
