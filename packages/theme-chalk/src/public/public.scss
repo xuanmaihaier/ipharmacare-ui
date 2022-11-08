@@ -1,0 +1,401 @@
+@charset "UTF-8";
+/* input框内层调整 */
+:root .el-input__inner,
+:root .el-input--mini .el-input__inner,
+:root .el-input--small .el-input__inner,
+:root .el-input--medium .el-input__inner {
+  height: 28px;
+  min-height: 28px;
+  font-size: 14px;
+  line-height: 28px;
+  border-radius: 2px;
+  color: #333333;
+}
+
+/* 所有大小的input 统一字体大小 */
+:root .el-input,
+:root .el-input--mini,
+:root .el-input--small,
+:root .el-input--medium {
+  font-size: 14px;
+  /* line-height: 28px; */
+}
+
+/* input没有选择时的颜色调整 */
+:root .el-input__inner::placeholder {
+  color: #999999!important;
+  font-size: 14px;
+}
+
+:root .el-input__inner::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #999999!important;
+  font-size: 14px;
+}
+
+:root .el-input__inner:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 适配火狐 */
+  color: #999999!important;
+  /* 设置opacity  解决firefox不生效问题 */
+  opacity: 1;
+  font-size: 14px;
+}
+
+:root .el-input__inner::-moz-placeholder {
+  /* Mozilla Firefox 19+ 适配火狐 */
+  color: #999999!important;
+  opacity: 1;
+  font-size: 14px;
+}
+
+:root .el-input__inner:-ms-input-placeholder {
+  /* Internet Explorer 10+  适配ie*/
+  color: #999999!important;
+  font-size: 14px;
+}
+
+/* input框后缀修改 */
+:root .el-input__suffix {
+  line-height: 28px;
+}
+
+/* el-tag溢出隐藏修改 */
+:root .el-select .el-tag,
+:root .el-form-item .el-tag,
+:root .fake-input .el-tag,
+:root .el-select__tags-text {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* input框自适应时 el-tag max-width 太长会导致换行 */
+@media screen and (max-width:1463px) {
+  :root .el-select .el-tag,
+  :root .el-form-item .el-tag,
+  :root .fake-input .el-tag,
+  :root .el-select__tags-text {
+    max-width: 70px;
+  } 
+}
+
+:root .el-select__tags-text {
+  display: inline-block;
+}
+
+/* el-tag的居中 */
+:root .el-select .el-tag,
+:root .el-form-item .el-tag,
+:root .fake-input .el-tag{
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  /* margin: 0 2px; */
+}
+
+/* el-tag之间存在间距 */
+:root .el-select .el-tag + .el-tag,
+:root .el-form-item .el-tag + .el-tag,
+:root .fake-input .el-tag + .el-tag{
+  margin-left: 6px;
+}
+
+/* 改布局主要是清除掉层级不同情况下el-tag存在的定位bug 因为每个项目中写的不同 v2/v3生成的也不同 */
+:root .el-select .el-tag {
+  transform: none;
+  background-color: #ecf3ff;
+  border-color: #dae7ff;
+  color: #4585ff;
+}
+
+/* el-tag关闭按钮的样式 */
+:root .el-select .el-tag .el-icon-close {
+  color: #4585ff;
+  background-color: #ecf3ff;
+}
+
+/* el-tag关闭按钮的hover */
+:root .el-select .el-tag .el-icon-close:hover {
+  background-color: #4585ff;
+  color: #fff;
+}
+
+/* 下拉框中选项的样式 */
+:root .el-select-dropdown__item {
+  color: #333333;
+}
+
+/* 下拉框中选项的样式-disabled */
+:root .el-select-dropdown__item.is-disabled{
+  color: #999999;
+}
+
+/* 下拉框中选项的样式-selected */
+:root .el-select-dropdown__item.selected {
+  color: #4585ff;
+  font-weight: 700;
+}
+
+/* 表单筛选项的样式 */
+:root .el-form-item__content {
+  line-height: 28px;
+}
+
+:root .el-tag--info {
+  position: relative;
+  top: -50%;
+}
+
+/* 统一掉不同大小input的行高 因为各个项目中用的input大小可能不一样 */
+:root .el-input .el-input__icon,
+:root .el-input--mini .el-input__icon,
+:root .el-input--small .el-input__icon,
+:root .el-input--medium .el-input__icon {
+  line-height: 28px;
+}
+
+/* 时间范围选择器 element用的少 */
+:root .el-date-editor .el-range__icon,
+:root .el-date-editor .el-range-separator,
+:root .el-date-editor .el-range__close-icon {
+  line-height: 22px;
+}
+
+/* antd的时间筛选框修改 由于需求方面的问题 部分项目中使用了antd的时间选择器 */
+:root .ant-calendar-picker .ant-calendar-picker-input, :root .ant-calendar-picker .ant-calendar-range-picker-input {
+  font-size: 14px !important;
+  height: 28px;
+  min-height: 28px;
+  line-height: 28px;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #333333;
+}
+
+/* antd的时间选择器没选择的状态 */
+:root .ant-calendar-picker .ant-calendar-picker-input::placeholder, :root .ant-calendar-picker .ant-calendar-range-picker-input::placeholder {
+  color: #999999!important;
+  font-size: 14px;
+}
+
+:root .ant-calendar-picker .ant-calendar-picker-input::-webkit-input-placeholder, :root .ant-calendar-picker .ant-calendar-range-picker-input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #999999!important;
+  font-size: 14px;
+}
+
+:root .ant-calendar-picker .ant-calendar-picker-input:-moz-placeholder, :root .ant-calendar-picker .ant-calendar-range-picker-input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 适配火狐 */
+  color: #999999!important;
+  /* 设置opacity  解决firefox不生效问题 */
+  opacity: 1;
+  font-size: 14px;
+}
+
+:root .ant-calendar-picker .ant-calendar-picker-input::-moz-placeholder, :root .ant-calendar-picker .ant-calendar-range-picker-input::-moz-placeholder {
+  /* Mozilla Firefox 19+ 适配火狐 */
+  color: #999999!important;
+  opacity: 1;
+  font-size: 14px;
+}
+
+:root .ant-calendar-picker .ant-calendar-picker-input:-ms-input-placeholder, :root .ant-calendar-picker .ant-calendar-range-picker-input:-ms-input-placeholder {
+  /* Internet Explorer 10+  适配ie*/
+  color: #999999!important;
+  font-size: 14px;
+}
+
+/* disable情况下antd的组件颜色必须覆盖写死的#333 */
+.ant-calendar-picker-input.ant-input.ant-input-disabled {
+  color: #C0C4CC!important;
+}
+
+/* 按钮统一化 */
+:root .el-button,
+:root .el-button--mini,
+:root .el-button--small,
+:root .el-button--medium {
+  font-size: 14px;
+  /* height: 28px;
+  min-height: 28px; */
+  height: auto;
+  min-height: auto;
+  line-height: 1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* 弹出层中使用树结构 部分样式统一化 */
+:root .el-dialog .el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content{
+  background: #EDF2FC;
+}
+
+/* 弹出层中的页脚 */
+:root .el-dialog .el-dialog__footer{
+  box-shadow: 0px -2px 2px 0px #EDF2FC;
+} 
+
+/* 表格th、td的统一化 表格修改的大部分为边框 字体 行高等 */
+:root .el-table th,
+:root .el-table td {
+  text-align: left !important;
+  color: #333333;
+  font-size: 12px !important;
+  padding: 4px 0;
+  line-height: 1.3
+}
+
+/* spread-table 是没有间距的表格 对这种表格进行的样式统一 例如左右边框的删除 */
+/* :root .spread-table .el-table th.is-leaf:last-child, 
+:root .spread-table .el-table td:last-child
+{
+  border-right: none;
+} */
+
+:root .spread-table .el-table::before {
+  height: 0px;
+}
+
+:root .spread-table .el-table--border::after {
+  width: 1px;
+}
+
+:root .spread-table .el-table--border {
+  border: none;
+  border-top: 1px solid #EBEEF5;
+}
+
+/* 表头样式统一 */
+:root .el-table th {
+  color: #333333;
+  background-color: #edf2fc!important;
+  background: #edf2fc!important;
+  font-weight: 700;
+  /* 二级表头存在边框问题 */
+  border-color: #e5e5e5
+}
+
+/* 表格内容块的样式 */
+:root .el-table td {
+  color: #333333;
+}
+/* 表格中的表格样式和全局不同 */
+:root .el-table .el-button {
+  font-size: 12px !important;
+  text-align: left !important;
+}
+
+/* 表格中的可编辑的input */
+:root .el-table .el-input-group__append {
+  text-align: center;
+}
+
+/* 表格边框颜色统一化 */
+:root .el-table td,
+:root .el-table th.is-leaf,
+:root .el-table--border,
+:root .el-table--group {
+  border-color: #e5e5e5 !important;
+}
+
+/* spread-table无左右边框 原生中使用after元素做的右边框 在不改变原有逻辑的基础上改变颜色 */
+:root .spread-table .el-table--border::after,
+:root .spread-table .el-table--group::after,
+:root .spread-table .el-table::before {
+  background-color: #ffffff !important;
+  z-index: 5;
+}
+
+/* 使用small form的label行高调整 */
+:root .el-form-item .el-form-item__label,
+:root .el-form-item--mini .el-form-item__label
+:root .el-form-item--small .el-form-item__label {
+  line-height: 28px;
+  padding: 0 2px 0 0;
+  color: #333;
+  font-weight: normal
+}
+
+/* 主要布局的边框去除 在内部使用padding撑开 */
+:root .table-box,
+:root .configurable-table-warp {
+  padding: 0 !important;
+}
+
+:root .table-box .table-box-operation {
+  padding: 10px;
+}
+
+/* 去除.spread-table的下框线 fixed情况的行 会存在下框线 */
+:root .spread-table .el-table__fixed-right::before, 
+:root .spread-table .el-table__fixed::before{
+  height: 0!important;
+}
+
+/* fixed列 滑动行背景修改 */
+:root .el-table__fixed-right-patch{
+  background-color:#edf2fc!important
+}
+
+/* fixed列不存在边框 行会存在1px偏差 */
+:root .el-table__fixed{
+  border-right: 1px solid #EBEEF5;
+}
+
+/* 去除边框 */
+:root .el-table__body-wrapper.is-scrolling-left~.el-table__fixed, 
+:root .el-table__body-wrapper.is-scrolling-none~.el-table__fixed, 
+:root .el-table__body-wrapper.is-scrolling-none~.el-table__fixed-right,
+:root .el-table__body-wrapper.is-scrolling-right~.el-table__fixed-right{
+  border-right:none
+}
+
+/* + - */
+:root .el-input-number{
+  line-height: 26px;
+}
+:root .el-input-number.is-controls-right .el-input-number__increase, 
+:root .el-input-number.is-controls-right .el-input-number__decrease{
+  line-height: 13px
+}
+
+/* 级联 */
+:root .el-cascader{
+  line-height: 28px;
+}
+
+/*修改滚动条样式*/
+div::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+div::-webkit-scrollbar-track {
+  background: transparent!important;
+  border-radius: 2px!important;
+}
+div::-webkit-scrollbar-thumb {
+  background: #D8D8D8!important;
+  border-radius: 8px!important;
+}
+div::-webkit-scrollbar-thumb:hover {
+  background: #BEBEBE!important;
+}
+div::-webkit-scrollbar-corner {
+  background: transparent!important;
+}
+
+/* 线性按钮与面性按钮样式 */
+.el-button--default {
+  color: #333333;
+  border-color: #d9d9d9;
+}
+
+/* 文本类型按钮无边框 */
+.el-button--text, .el-button--text.is-disabled, .el-button--text.is-disabled:focus, .el-button--text.is-disabled:hover, .el-button--text:active {
+  border-color: transparent;
+}
+
+.el-button--primary {
+  color: #ffffff;
+}

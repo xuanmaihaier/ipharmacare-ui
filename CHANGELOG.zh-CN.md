@@ -32,3 +32,13 @@
 #### feat 新增功能
 - 增加ip-file-download 导出下载组件
 - 增加了业务系统中的iconfont图标
+
+### 1.0.19
+
+*2022-11-08*
+
+#### feat 新增功能
+- 增加了业务css文件 在theme-chalk/src/public文件夹下 其中public.scss为核心样式修改文件
+
+#### fix 修改
+- 修复了ipharmacare业务分页器组件 由于使用jsx=>template修改后 watch在mounted之前执行导致的第一次末页disable状态异常

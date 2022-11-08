@@ -33,7 +33,8 @@ export default {
       currentPage: 1,
       pageSize: 20,
       firstPageEl: {},
-      lastPageEl: {}
+      lastPageEl: {},
+      load: false
     };
   },
   computed: {
@@ -52,32 +53,34 @@ export default {
     // page size total 改变时执行
     pageChange: {
       handler() {
-        const { firstPageEl, lastPageEl, currentPage, total, pageSize } = this;
-        // 添加点击监听事件
-        this.firstPageEl.onclick = () => {
-          this.currentPage = 1;
-          this.$emit('current-change', this.currentPage);
-        };
-        this.lastPageEl.onclick = () => {
-          this.currentPage = Math.ceil(total / pageSize);
-          this.$emit('current-change', this.currentPage);
-        };
-        const maxPage = Math.ceil(total / pageSize);
-        if (maxPage <= 1) {
-          firstPageEl.disabled = true;
-          lastPageEl.disabled = true;
-        } else {
-          if (currentPage === 1) {
+        this.$nextTick(()=>{
+          const { firstPageEl, lastPageEl, currentPage, total, pageSize } = this;
+          // 添加点击监听事件
+          this.firstPageEl.onclick = () => {
+            this.currentPage = 1;
+            this.$emit('current-change', this.currentPage);
+          };
+          this.lastPageEl.onclick = () => {
+            this.currentPage = Math.ceil(total / pageSize);
+            this.$emit('current-change', this.currentPage);
+          };
+          const maxPage = Math.ceil(total / pageSize);
+          if (maxPage <= 1) {
             firstPageEl.disabled = true;
-            lastPageEl.disabled = false;
-          } else if (currentPage === maxPage) {
-            firstPageEl.disabled = false;
             lastPageEl.disabled = true;
           } else {
-            firstPageEl.disabled = false;
-            lastPageEl.disabled = false;
+            if (currentPage === 1) {
+              firstPageEl.disabled = true;
+              lastPageEl.disabled = false;
+            } else if (currentPage === maxPage) {
+              firstPageEl.disabled = false;
+              lastPageEl.disabled = true;
+            } else {
+              firstPageEl.disabled = false;
+              lastPageEl.disabled = false;
+            }
           }
-        }
+        });
       },
       deep: true,
       immediate: true
@@ -130,6 +133,7 @@ export default {
 <style lang="scss" scoped>
 ::v-deep {
   .el-pagination {
+    font-family: "\5FAE\8F6F\96C5\9ED1",Tahoma,Helvetica,Arial,Microsoft YaHei,宋体,sans-serif;
     button {
       padding: 0 10px;
       margin: 0 4px;

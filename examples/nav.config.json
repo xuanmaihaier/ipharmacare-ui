@@ -316,6 +316,15 @@
       "name": "逸曜业务组件",
       "groups": [
         {
+          "groupName": "Basic",
+          "list": [
+            {
+              "path": "/ip-layout",
+              "title": "IpLayout 布局"
+            }
+          ]
+        },
+        {
           "groupName": "Data",
           "list": [
             {
@@ -326,7 +335,8 @@
               "title": "IpTree 树形控件"
             }
           ]
-        },{
+        },
+        {
           "groupName": "Form",
           "list": [
             {
