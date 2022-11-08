@@ -332,6 +332,10 @@
             {
               "path": "/ip-search-container",
               "title": "IpsearchContainer 搜索"
+            },
+            {
+              "path": "/ip-file-download",
+              "title": "IpFileDownload 导出下载"
             }
           ]
         }
