@@ -1,4 +1,4 @@
-import IpTree from './src/ip-tree';
+import IpTree from './src/tree';
 
 /* istanbul ignore next */
 IpTree.install = function(Vue) {
