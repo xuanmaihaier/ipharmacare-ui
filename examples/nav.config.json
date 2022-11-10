@@ -319,8 +319,8 @@
           "groupName": "Basic",
           "list": [
             {
-              "path": "/ip-layout",
-              "title": "IpLayout 布局"
+              "path": "/ip-message",
+              "title": "IpMessage 消息"
             }
           ]
         },

@@ -179,10 +179,3 @@
 | deleteFile     | 删除单个文件；parmas为文件id；callback执行会触发关闭二次确认窗口并重新执行getFileList，可以在发送请求200后执行  | parmas, callback |
 | clearFileList  | 删除所有文件；parmas为模块名称；callback执行会触发关闭二次确认窗口并重新执行getFileList，可以在发送请求200后执行  | parmas, callback |
 
-### Slot
-
-| name | 说明                                      |
-| ---- | ----------------------------------------- |
-| search-default    | 默认显示的筛选框 |
-| search-extend     | 点击展开显示的筛选框 |
-| search-operation  | 操作框 |

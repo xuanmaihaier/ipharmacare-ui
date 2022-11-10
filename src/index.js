@@ -91,6 +91,7 @@ import Result from '../packages/result/index.js';
 import IpPagination from '../packages/ip-pagination/index.js';
 import IpSearchContainer from '../packages/ip-search-container/index.js';
 import IpFileDownload from '../packages/ip-file-download/index.js';
+import IpMessage from '../packages/ip-message/index.js';
 import locale from 'element-ui/src/locale';
 import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
 
@@ -181,6 +182,7 @@ const components = [
   IpPagination,
   IpSearchContainer,
   IpFileDownload,
+  IpMessage,
   CollapseTransition
 ];
 
@@ -216,7 +218,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.0.19',
+  version: '1.0.20',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -311,5 +313,6 @@ export default {
   Result,
   IpPagination,
   IpSearchContainer,
-  IpFileDownload
+  IpFileDownload,
+  IpMessage
 };

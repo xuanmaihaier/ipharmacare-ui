@@ -1,11 +1,37 @@
 ## 更新日志（所有版本目前基于element2.15.9）
 
-### 1.0.1
+### 1.0.20
 
-*2022-11-01*
+*2022-11-10*
 
 #### feat 新增功能
-- 增加ipharmacare业务分页器组件
+- 项目增加了websocket支持
+- 增加了websocket消息盒子组件
+
+### 1.0.19
+
+*2022-11-08*
+
+#### feat 新增功能
+- 增加了业务css文件 在theme-chalk/src/public文件夹下 其中public.scss为核心样式修改文件
+
+#### fix 修改
+- 修复了ipharmacare业务分页器组件 由于使用jsx=>template修改后 watch在mounted之前执行导致的第一次末页disable状态异常
+
+### 1.0.17
+
+*2022-11-08*
+
+#### feat 新增功能
+- 增加ip-file-download 导出下载组件
+- 增加了业务系统中的iconfont图标
+
+### 1.0.15
+
+*2022-11-03*
+
+#### fix 修改
+- 修正由于webpack中scss未配置style-loader导致的打包后丢失样式的问题
 
 ### 1.0.7
 
@@ -18,27 +44,10 @@
 #### fix 修改
 - ip-pagination重写
 
-### 1.0.15
 
-*2022-11-03*
+### 1.0.1
 
-#### fix 修改
-- 修正由于webpack中scss未配置style-loader导致的打包后丢失样式的问题
-
-### 1.0.17
-
-*2022-11-08*
+*2022-11-01*
 
 #### feat 新增功能
-- 增加ip-file-download 导出下载组件
-- 增加了业务系统中的iconfont图标
-
-### 1.0.19
-
-*2022-11-08*
-
-#### feat 新增功能
-- 增加了业务css文件 在theme-chalk/src/public文件夹下 其中public.scss为核心样式修改文件
-
-#### fix 修改
-- 修复了ipharmacare业务分页器组件 由于使用jsx=>template修改后 watch在mounted之前执行导致的第一次末页disable状态异常
+- 增加ipharmacare业务分页器组件
