@@ -1,4 +1,4 @@
-## ip-more 更多
+## ip-topbar 头部
 
 业务中的更多按钮。
 
@@ -9,17 +9,36 @@
 ```html
 <template>
   <div class="block">
-    <ip-more
+    <ip-topbar
+      minWidth="100%"
       :extensionMenus="extensionMenus"
       imageUrl="http://10.1.1.156:9999/web/static/images/top/"
+      :messageCount="messageCount"
+      :messageList="messageList"
+      :userId="-200"
+      token="7"
+      socketUrl="syscenter/api/v1/config/websocketAddress"
+      tempUrl="/syscenter/management/message-center/message-list/"
+      messageListLink="/syscenter/management/message-center/message-list"
+      @getMsgList="getMsgList"
+      @readMessage="readMessage"
+      @readAllHandler="readAllHandler"
+      @openUrl="openUrl"
     >
-    </ip-more>
+    </ip-topbar>
   </div>
 </template>
 <script>
   export default {
     data() {
       return {
+        messagesOption: {
+          page: 1,
+          pageSize: 9,
+          status: 'STATUS_UNREAD',
+        },
+        messageCount: 0,
+        messageList: {},
         extensionMenus: [
           {
             id: null,
@@ -159,7 +178,7 @@
 
 ### Attributes
 
-| 参数           | 说明            | 类型   | 可选值 | 默认值                    |
-| -------------- | --------------- | ------ | ------ | ------------------------- |
-| extensionMenus | 菜单数据源      | array  | —      | []                        |
+| 参数           | 说明              | 类型   | 可选值 | 默认值                    |
+| -------------- | ----------------- | ------ | ------ | ------------------------- |
+| extensionMenus | 菜单数据源        | array  | —      | []                        |
 | imageUrl       | 图片的 url 根地址 | string | —      | '/web/static/images/top/' |

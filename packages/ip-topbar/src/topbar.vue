@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="top-nav" :style="`min-width:${minWidth}`">
     <div class="log">{{ title }}</div>
     <el-menu :active-text-color="variables.menuActiveText" :default-active="activeMenu" mode="horizontal"
@@ -11,133 +11,8 @@
     </el-menu>
 
     <div class="right-menu">
-      <div class="nav-item-tool">
-        <el-dropdown style="position: relative" trigger="click" @visible-change="messageVisibleChange">
-          <span class="el-dropdown-link">
-            <span class="iconfont icon-notice" style="vertical-align: center;padding-right: 5px" />
-            <span>消息</span>
-            <i v-if="messageCount > 0 && messageCount <= 9" class="meesage-unread-icon">
-              {{ messageCount }}
-            </i>
-            <i v-if="messageCount > 9" class="meesage-unread-icon"> 9+ </i>
-          </span>
-          <el-dropdown-menu slot="dropdown" ref="msgDropdownMenu" style="width: 330px; padding: 0"
-            class="flex flex-column">
-            <div class="box-header">
-              <span ref="message" style="color: #000" @click="readAllHandler">消息通知</span>
-              <a v-if="
-                messageList &&
-                messageList.recordList &&
-                messageList.recordList.length != 0
-              " target="_blank" :href="messageListLink">
-                消息列表
-              </a>
-            </div>
-            <div v-if="
-              messageList &&
-              messageList.recordList &&
-              messageList.recordList.length >= 0
-            " class="box-container flex flex-column" style="flex: 1 1 auto">
-              <div ref="boxElement" class="flex-1">
-                <div v-for="(item, index) in messageList.recordList" :key="index" class="box-item flex"
-                  @click="readMessage(item.id)">
-                  <div class="message-item-icon">
-                    <span>{{
-                        item.serverShortName
-                          ? item.serverShortName
-                          : item.serverName
-                    }}</span>
-                  </div>
-                  <div class="message-item">
-                    <div class="message-item-title" :title="item.title">
-                      {{ item.title }}
-                    </div>
-                    <div class="message-item-content">
-                      {{ item.message }}
-                    </div>
-                    <div class="message-item-date">
-                      <div class="message-item-title" :title="
-                        (item ? item.sendRealName : '') + item.createTime
-                      ">
-                        {{
-                            item &&
-                            (item.sendRealName ? item.sendRealName + ' ' : '')
-                        }}{{ item.createTime }}
-                      </div>
-                      <a v-if="item.url && item.isShowUrl" href="javascript:(0)" @click="openUrl(item, $event)">
-                        进入{{
-                            item.serverShortName
-                              ? item.serverShortName
-                              : item.serverName
-                        }}</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div v-else ref="boxElement" class="box-container" style="height: 40px;
-                    text-align: center;
-                    color: #aaaab2;
-                    line-height: 40px;
-                    cursor: initial;">
-              没有未读信息
-            </div>
-            <div class="box-footer">
-              <a v-if="
-                !messageList ||
-                (messageList &&
-                  messageList.recordList &&
-                  messageList.recordList.length == 0)
-              " target="_blank" :href="messageListLink">消息列表</a>
-              <a v-else style="font-size: 14px" @click="readAllHandler()">全标已读</a>
-            </div>
-          </el-dropdown-menu>
-        </el-dropdown>
-      </div>
-      <div class="nav-item-tool">
-        <el-dropdown trigger="click" placement="bottom-end" @visible-change="visibleChange">
-          <span class="el-dropdown-link" style="margin: 0">
-            <span class="iconfont icon-menu" style="vertical-align: center;padding-right: 5px" />
-            <span>更多</span>
-          </span>
-          <el-dropdown-menu slot="dropdown" ref="dropdownMenu" class="extend-nav flex flex-column" style="width: 300px">
-            <div v-if="extensionMenus && extensionMenus.length" class="flex-1 extend-nav-main" style="flex: 1 1 auto">
-              <el-dropdown-item v-for="(item, index) in extensionMenus" :key="index" class="extend-nav-item">
-                <div @click="blink(item)">
-                  <div class="extend-menus-name">
-                    <span class="extend-menus-img">
-                      <img :src="`/web/static/images/top/${item.systemId}.svg`">
-                    </span>
-                    <span>
-                      {{ item.name }}
-                    </span>
-                  </div>
-                  <div class="extend-menus-children-name" :title="item.navName">
-                    <span v-for="(item, index) in item.children" :key="index">
-                      ·{{ item.name }}
-                    </span>
-                  </div>
-                </div>
-              </el-dropdown-item>
-            </div>
-            <div class="extend-nav-footer">
-              <el-dropdown-item style="padding: 0">
-                <ul class="extend-quick-route">
-                  <li style="margin-top: 10px">
-                    <a href="/intervene/zlcx/aq.action" target="_blank">处方评估</a>
-                    |
-                    <a href="/pages/docs/" target="_blank">资料查询</a>
-                    |
-                    <a href="/pages/drug-match/matching" target="_blank">配伍禁忌</a>
-                    |
-                    <a href="/intervene/medjs/heart_system.jsp" target="_blank">医学计算</a>
-                  </li>
-                </ul>
-              </el-dropdown-item>
-            </div>
-          </el-dropdown-menu>
-        </el-dropdown>
-      </div>
+      <ip-message :messageCount="messageCount" :messageList="messageList" :userId="userId" :token="token" :socketUrl="socketUrl" :tempUrl="tempUrl" :messageListLink="messageListLink"/>
+      <ip-more :extensionMenus="extensionMenus" :imageUrl="imageUrl"/>
       <div class="nav-item-tool">
         <el-dropdown trigger="click" class="user-btn">
           <span class="el-dropdown-link">
@@ -180,10 +55,6 @@ export default {
       type: String,
       require: true
     },
-    userId: {
-      type: Number,
-      require: true
-    },
     messageCount: {
       type: Number,
       default: 0
@@ -197,33 +68,34 @@ export default {
         }
       }
     },
-    messagesOption: {
-      type: Object,
-      default: ()=>{}
+    userId: {
+      type: Number,
+      require: true
+    },
+    token: {
+      type: String,
+      require: true
+    },
+    socketUrl: {
+      type: String,
+      require: true
+    },
+    tempUrl: {
+      type: String,
+      default: '/syscenter/management/message-center/message-list/'
+    },
+    messageListLink: {
+      type: String,
+      default: '/syscenter/management/message-center/message-list'
     },
     extensionMenus: {
       type: Array,
-      default: ()=>[]
+      default: () => []
+    },
+    imageUrl: {
+      type: String,
+      default: '/web/static/images/top/'
     }
-  },
-  data() {
-    return {
-      // 消息通知
-      messageMenuTop: 32,
-      messageMenuBottom: 5,
-      messageMaxHeight: 500,
-      messageContainerHeight: 570,
-      messageOtherHeight: 70,
-      messageListLink: '/syscenter/management/message-center/message-list',
-      // 更多菜单
-      extendMenuAllHeight: null,
-      extendMenuAllBorder: 2,
-      extendMenuItemHeight: 60,
-      extendMenuTop: 32,
-      extendMenuPading: 10,
-      extendMenuBottom: 5,
-      visible: false
-    };
   },
   computed: {
     activeMenu() {
@@ -240,80 +112,16 @@ export default {
     }
   },
   mounted() {
-    this.getMsgList(this.messagesOption);
-    this.unReadCount();
-    this.getExtensionMenusInit();
-    if (this.userId) {
-      this.$emit('socket');
-    }
     // 窗口放大缩小
     window.addEventListener(
       'resize',
       () => {
-
         this.$emit('setWindows', window.innerWidth);
-        this.setMenuHeight();
-        this.setMessageBoxHeight();
       },
       false
     );
   },
   methods: {
-    // 点击每条消息的进入
-    openUrl(item, $event) {
-      $event.stopPropagation();
-      this.$emit('openUrl', item.id);
-      if (item.url.indexOf('##SF_ADDRESS##') > -1) {
-        if (
-          location.hostname === 'localhost' ||
-          location.hostname === '127.0.0.1'
-        ) {
-          window.open(item.url.replace(/##SF_ADDRESS##/g, location.origin));
-        } else {
-          window.open(
-            item.url.replace(
-              /##SF_ADDRESS##/g,
-              `${location.origin}/auditcenter`
-            )
-          );
-        }
-      } else {
-        window.open(item.url);
-      }
-    },
-    /**
-     * 标记已读
-     * @param messageId 不传时候为标记全部已读
-     */
-    readMessage(messageId) {
-      this.$emit('readMessage', messageId, ()=>{
-        this.$nextTick(() => {
-          this.setMessageBoxHeight();
-        });
-      });
-      const tempUrl = '/syscenter/management/message-center/message-list/';
-      window.open(tempUrl + messageId);
-    },
-    /** 全部已读 */
-    readAllHandler() {
-      if (this.messageList && this.messageList.recordList.length) {
-        this.$confirm('确定要将全部消息标为已读吗？', {
-          distinguishCancelAndClose: true,
-          closeOnClickModal: false,
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        })
-          .then(() => {
-            this.$emit('readAllHandler', ()=>{
-              this.$nextTick(() => {
-                this.setMessageBoxHeight(); // 全部已读后，重新设置盒子高度
-              });
-            });
-          })
-          .catch(() => { });
-      }
-    },
     // 初始化获取未读取的消息条目数
     unReadCount() {
       this.$emit('unReadCount');
@@ -321,84 +129,6 @@ export default {
     // 获取消息列表
     getMsgList(option) {
       this.$emit('getMsgList', option);
-    },
-    // 自适应消息盒子高度
-    setMessageBoxHeight() {
-      this.$nextTick(() => {
-        if (this.$refs.msgDropdownMenu) {
-          const targetMenuDom = this.$refs.msgDropdownMenu.$el;
-          if (this.$refs.boxElement) {
-            const boxHeight = this.$refs.boxElement.offsetHeight;
-            const pageClinetHeight = document.documentElement.clientHeight;
-            const msgDropdownMenuAllHeight = boxHeight + this.messageOtherHeight;
-            if (
-              this.messageMenuTop +
-              msgDropdownMenuAllHeight +
-              this.messageMenuBottom >=
-              pageClinetHeight
-            ) {
-              targetMenuDom.style.height =
-                pageClinetHeight -
-                this.messageMenuTop -
-                this.messageMenuBottom * 2 +
-                'px';
-            } else {
-              targetMenuDom.style.height = 'unset';
-            }
-          }
-        }
-      });
-    },
-    // 自适应更多导航栏高度
-    setMenuHeight() {
-      this.$nextTick(() => {
-        if (this.$refs.dropdownMenu) {
-          const extendMenu = this.$refs.dropdownMenu.$el;
-          const explorerClientHeight = document.documentElement.clientHeight;
-          if (
-            this.extendMenuTop +
-            this.extendMenuAllHeight +
-            this.extendMenuBottom >=
-            explorerClientHeight
-          ) {
-            extendMenu.style.height =
-              explorerClientHeight -
-              this.extendMenuTop -
-              this.extendMenuBottom * 2 +
-              'px';
-          } else {
-            extendMenu.style.height = this.extendMenuAllHeight + 'px';
-          }
-        }
-      });
-    },
-    // 消息盒子，隐藏
-    messageVisibleChange(value) {
-      if (value) {
-        this.setMessageBoxHeight();
-        this.$nextTick(() => {
-          if (this.$refs.message) {
-            if (this.messageList && this.messageList.recordList.length !== 0) {
-              this.$refs.message.style.cursor = 'pointer';
-            }
-          }
-        });
-      }
-    },
-    // 点击更多，菜单显示隐藏
-    visibleChange(value) {
-      if (value) {
-        this.setMenuHeight();
-      }
-    },
-    blink(menu) {
-      window.open(menu.url, '_blank');
-    },
-    isOnlyOneChild(item) {
-      if (item.children && item.children.length === 1) {
-        return true;
-      }
-      return false;
     },
     resolvePath(item) {
       return item.url;
@@ -422,9 +152,6 @@ export default {
       }).then(() => {
         this.$emit('logout');
       });
-    },
-    getExtensionMenusInit() {
-      this.$emit('getExtensionMenusInit');
     }
   }
 };
@@ -682,4 +409,4 @@ i.meesage-unread-icon {
   padding: 3px 12px !important;
   font-size: 13px !important;
 }
-</style> -->
+</style>

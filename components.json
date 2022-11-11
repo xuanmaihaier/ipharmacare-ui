@@ -91,5 +91,6 @@
   "ip-search-container": "./packages/ip-search-container/index.js",
   "ip-file-download": "./packages/ip-file-download/index.js",
   "ip-message": "./packages/ip-message/index.js",
-  "ip-more": "./packages/ip-more/index.js"
+  "ip-more": "./packages/ip-more/index.js",
+  "ip-topbar": "./packages/ip-topbar/index.js"
 }

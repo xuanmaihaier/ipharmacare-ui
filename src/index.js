@@ -93,6 +93,7 @@ import IpSearchContainer from '../packages/ip-search-container/index.js';
 import IpFileDownload from '../packages/ip-file-download/index.js';
 import IpMessage from '../packages/ip-message/index.js';
 import IpMore from '../packages/ip-more/index.js';
+import IpTopbar from '../packages/ip-topbar/index.js';
 import locale from 'element-ui/src/locale';
 import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
 
@@ -185,6 +186,7 @@ const components = [
   IpFileDownload,
   IpMessage,
   IpMore,
+  IpTopbar,
   CollapseTransition
 ];
 
@@ -317,5 +319,6 @@ export default {
   IpSearchContainer,
   IpFileDownload,
   IpMessage,
-  IpMore
+  IpMore,
+  IpTopbar
 };

@@ -325,6 +325,10 @@
             {
               "path": "/ip-more",
               "title": "IpMore 更多"
+            },
+            {
+              "path": "/ip-topbar",
+              "title": "IpTopbar 头部"
             }
           ]
         },
@@ -334,7 +338,8 @@
             {
               "path": "/ip-pagination",
               "title": "IpPagination 分页"
-            },{
+            },
+            {
               "path": "/ip-tree",
               "title": "IpTree 树形控件"
             }
@@ -345,7 +350,7 @@
           "list": [
             {
               "path": "/ip-search-container",
-              "title": "IpsearchContainer 搜索"
+              "title": "IpSearchContainer 搜索"
             },
             {
               "path": "/ip-file-download",
