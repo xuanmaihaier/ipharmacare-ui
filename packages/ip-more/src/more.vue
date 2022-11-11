@@ -101,16 +101,6 @@ export default {
       extendMenuBottom: 5
     };
   },
-  mounted() {
-    // 窗口放大缩小
-    window.addEventListener(
-      'resize',
-      () => {
-        this.setMenuHeight();
-      },
-      false
-    );
-  },
   methods: {
   // 点击更多，菜单显示隐藏
     visibleChange(value) {
@@ -167,7 +157,11 @@ img {
 }
 .el-dropdown-link {
   color: #ffffff;
-  cursor: pointer;
+  cursor: pointer;  
+  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 .extend-nav {
@@ -252,5 +246,12 @@ img {
     line-height: 24px;
     padding: 0 10px;
     font-size: 12px;
+}
+
+.el-popper[x-placement^='bottom'] {
+  margin-top: -3px;
+}
+.el-popper[x-placement^='bottom'] /deep/ .popper__arrow {
+  top: -7px;
 }
 </style>

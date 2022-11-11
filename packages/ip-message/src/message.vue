@@ -1,67 +1,39 @@
 <template>
   <!-- 消息盒子 -->
-  <el-dropdown
-    style="position: relative"
-    trigger="click"
-    @visible-change="messageVisibleChange"
-  >
+  <el-dropdown style="position: relative" trigger="click" @visible-change="messageVisibleChange">
     <span class="el-dropdown-link">
-      <span
-        class="iconfont icon-notice"
-        style="vertical-align: center;padding-right: 5px"
-      />
+      <span class="iconfont icon-notice" style="vertical-align: center;padding-right: 5px" />
       <span>消息</span>
-      <i
-        v-if="messageCount > 0 && messageCount <= 9"
-        class="meesage-unread-icon"
-      >
+      <i v-if="messageCount > 0 && messageCount <= 9" class="meesage-unread-icon">
         {{ messageCount }}
       </i>
       <i v-if="messageCount > 9" class="meesage-unread-icon"> 9+ </i>
     </span>
-    <el-dropdown-menu
-      slot="dropdown"
-      ref="msgDropdownMenu"
-      style="width: 330px; padding: 0"
-      class="flex flex-column"
-    >
+    <el-dropdown-menu slot="dropdown" ref="msgDropdownMenu" style="width: 330px; padding: 0"
+      class="flex flex-column">
       <!-- 消息盒子头部 -->
       <div class="box-header">
-        <span ref="message" style="color: #000" @click="readAllHandler"
-          >消息通知</span
-        >
-        <a
-          v-if="
-            messageList &&
-              messageList.recordList &&
-              messageList.recordList.length != 0
-          "
-          target="_blank"
-          :href="messageListLink"
-        >
+        <span ref="message" style="color: #000" @click="readAllHandler">消息通知</span>
+        <a v-if="
+          messageList &&
+          messageList.recordList &&
+          messageList.recordList.length != 0
+        " target="_blank" :href="messageListLink">
           消息列表
         </a>
       </div>
       <!-- 消息盒子主体 -->
-      <div
-        v-if="
-          messageList &&
-            messageList.recordList &&
-            messageList.recordList.length >= 0
-        "
-        class="box-container flex flex-column"
-        style="flex: 1 1 auto"
-      >
+      <div v-if="
+        messageList &&
+        messageList.recordList &&
+        messageList.recordList.length >= 0
+      " class="box-container flex flex-column" style="flex: 1 1 auto">
         <div ref="boxElement" class="flex-1">
-          <div
-            v-for="(item, index) in messageList.recordList"
-            :key="index"
-            class="box-item flex"
-            @click="readMessage(item.id)"
-          >
+          <div v-for="(item, index) in messageList.recordList" :key="index" class="box-item flex"
+            @click="readMessage(item.id)">
             <div class="message-item-icon">
               <span>{{
-                item.serverShortName ? item.serverShortName : item.serverName
+                  item.serverShortName ? item.serverShortName : item.serverName
               }}</span>
             </div>
             <div class="message-item">
@@ -72,54 +44,36 @@
                 {{ item.message }}
               </div>
               <div class="message-item-date">
-                <div
-                  class="message-item-title"
-                  :title="(item ? item.sendRealName : '') + item.createTime"
-                >
+                <div class="message-item-title" :title="(item ? item.sendRealName : '') + item.createTime">
                   {{ item && (item.sendRealName ? item.sendRealName + ' ' : '')
                   }}{{ item.createTime }}
                 </div>
-                <a
-                  v-if="item.url && item.isShowUrl"
-                  href="javascript:(0)"
-                  @click="openUrl(item, $event)"
-                >
+                <a v-if="item.url && item.isShowUrl" href="javascript:(0)" @click="openUrl(item, $event)">
                   进入{{
-                    item.serverShortName
-                      ? item.serverShortName
-                      : item.serverName
-                  }}</a
-                >
+                      item.serverShortName
+                        ? item.serverShortName
+                        : item.serverName
+                  }}</a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        v-else
-        ref="boxElement"
-        class="box-container"
-        style="height: 40px;
+      <div v-else ref="boxElement" class="box-container" style="height: 40px;
                     text-align: center;
                     color: #aaaab2;
                     line-height: 40px;
-                    cursor: initial;"
-      >
+                    cursor: initial;">
         没有未读信息
       </div>
       <!-- 消息盒子footer -->
       <div class="box-footer">
-        <a
-          v-if="
-            !messageList ||
-              (messageList &&
-                messageList.recordList &&
-                messageList.recordList.length == 0)
-          "
-          target="_blank"
-          :href="messageListLink"
-          >消息列表</a
-        >
+        <a v-if="
+          !messageList ||
+          (messageList &&
+            messageList.recordList &&
+            messageList.recordList.length == 0)
+        " target="_blank" :href="messageListLink">消息列表</a>
         <a v-else style="font-size: 14px" @click="readAllHandler()">全标已读</a>
       </div>
     </el-dropdown-menu>
@@ -144,7 +98,7 @@ export default {
       default: {
         recordList: {
           type: Array,
-          default: ()=>[]
+          default: () => []
         }
       }
     },
@@ -189,14 +143,6 @@ export default {
     if (this.userId) {
       this.reconnect(this.socketUrl);
     }
-    // 窗口放大缩小
-    window.addEventListener(
-      'resize',
-      () => {
-        this.setMessageBoxHeight();
-      },
-      false
-    );
   },
   methods: {
     // 消息盒子，隐藏
@@ -241,7 +187,7 @@ export default {
               });
             });
           })
-          .catch(() => {});
+          .catch(() => { });
       }
     },
     /**
@@ -287,7 +233,7 @@ export default {
     // 点击每条消息的进入
     openUrl(item, $event) {
       $event.stopPropagation();
-      this.$emit('openUrl', item, ()=>{
+      this.$emit('openUrl', item, () => {
         this.$nextTick(() => {
           this.setMessageBoxHeight(); // 点击后，重新设置盒子高度
         });
@@ -321,8 +267,8 @@ export default {
             const msgDropdownMenuAllHeight = boxHeight + this.messageOtherHeight;
             if (
               this.messageMenuTop +
-                msgDropdownMenuAllHeight +
-                this.messageMenuBottom >=
+              msgDropdownMenuAllHeight +
+              this.messageMenuBottom >=
               pageClinetHeight
             ) {
               targetMenuDom.style.height =
@@ -350,7 +296,11 @@ export default {
 
 .el-dropdown-link {
   color: #ffffff;
-  cursor: pointer;
+  cursor: pointer;  
+  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 i.meesage-unread-icon {
@@ -461,5 +411,20 @@ i.meesage-unread-icon {
   padding: 0 !important;
   font-size: 14px !important;
   color: #d9d9d9 !important;
+}
+
+.el-popper[x-placement^='bottom'] {
+  /deep/ .popper__arrow,
+  /deep/ .popper__arrow::after {
+    border-bottom-color: #ebeef5;
+  }
+
+}
+
+.el-popper[x-placement^='bottom'] {
+  margin-top: -3px;
+}
+.el-popper[x-placement^='bottom'] /deep/ .popper__arrow {
+  top: -7px;
 }
 </style>

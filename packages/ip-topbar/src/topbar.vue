@@ -1,7 +1,7 @@
 <template>
   <div class="top-nav" :style="`min-width:${minWidth}`">
     <div class="log">{{ title }}</div>
-    <el-menu :active-text-color="variables.menuActiveText" :default-active="activeMenu" mode="horizontal"
+    <el-menu v-if="showMenu" :active-text-color="variables.menuActiveText" :default-active="activeMenu" mode="horizontal"
       @select="handleSelect">
       <div v-for="item in pageResource" :key="item.url" class="nav-item">
         <app-link :to="resolvePath(item)">
@@ -9,17 +9,16 @@
         </app-link>
       </div>
     </el-menu>
-
     <div class="right-menu">
-      <ip-message :messageCount="messageCount" :messageList="messageList" :userId="userId" :token="token" :socketUrl="socketUrl" :tempUrl="tempUrl" :messageListLink="messageListLink"/>
-      <ip-more :extensionMenus="extensionMenus" :imageUrl="imageUrl"/>
+      <ip-message ref="ipMessage" v-bind="_attrs" v-on="$listeners" />
+      <ip-more ref="ipMore" v-bind="_attrs" v-on="$listeners" />
       <div class="nav-item-tool">
         <el-dropdown trigger="click" class="user-btn">
           <span class="el-dropdown-link">
             <span class="iconfont icon-user" style="vertical-align: center;padding-right: 5px" />
             <span style="margin-left: -1px">{{ name }}</span>
           </span>
-          <el-dropdown-menu slot="dropdown">
+          <el-dropdown-menu slot="dropdown" class="outLoginMenu">
             <el-dropdown-item class="outLogin" @click.native="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -55,52 +54,18 @@ export default {
       type: String,
       require: true
     },
-    messageCount: {
-      type: Number,
-      default: 0
-    },
-    messageList: {
-      type: Object,
-      default: {
-        recordList: {
-          type: Array,
-          default: ()=>[]
-        }
-      }
-    },
-    userId: {
-      type: Number,
-      require: true
-    },
-    token: {
+    path: {
       type: String,
-      require: true
+      default: '/dashboard'
     },
-    socketUrl: {
-      type: String,
-      require: true
-    },
-    tempUrl: {
-      type: String,
-      default: '/syscenter/management/message-center/message-list/'
-    },
-    messageListLink: {
-      type: String,
-      default: '/syscenter/management/message-center/message-list'
-    },
-    extensionMenus: {
-      type: Array,
-      default: () => []
-    },
-    imageUrl: {
-      type: String,
-      default: '/web/static/images/top/'
+    showMenu: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
     activeMenu() {
-      const route = this.$route;
-      const { path } = route;
+      const path = this.path;
       if (path === '/dashboard') {
         return '/';
       }
@@ -109,6 +74,10 @@ export default {
     },
     variables() {
       return variables;
+    },
+    _attrs() {
+      let attrs = { ...this.$attrs };
+      return attrs;
     }
   },
   mounted() {
@@ -117,19 +86,13 @@ export default {
       'resize',
       () => {
         this.$emit('setWindows', window.innerWidth);
+        this.$refs.ipMessage.setMessageBoxHeight();
+        this.$refs.ipMore.setMenuHeight();
       },
       false
     );
   },
   methods: {
-    // 初始化获取未读取的消息条目数
-    unReadCount() {
-      this.$emit('unReadCount');
-    },
-    // 获取消息列表
-    getMsgList(option) {
-      this.$emit('getMsgList', option);
-    },
     resolvePath(item) {
       return item.url;
     },
@@ -403,7 +366,9 @@ i.meesage-unread-icon {
 .el-popper[x-placement^='bottom'] /deep/ .popper__arrow {
   top: -7px;
 }
-
+.outLoginMenu{
+  padding: 3px 0;
+}
 .outLogin {
   line-height: 27px !important;
   padding: 3px 12px !important;
