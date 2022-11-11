@@ -321,6 +321,10 @@
             {
               "path": "/ip-message",
               "title": "IpMessage 消息"
+            },
+            {
+              "path": "/ip-more",
+              "title": "IpMore 更多"
             }
           ]
         },

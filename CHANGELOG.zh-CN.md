@@ -1,5 +1,16 @@
 ## 更新日志（所有版本目前基于element2.15.9）
 
+### 1.0.21
+
+*2022-11-11*
+
+#### feat 新增功能
+- 项目增加了ip-more更多组件
+
+#### fix 修改
+- 移除了ip-message的`setWidth`方法，后期放在ip-topbar中暴露
+- 移除了ip-file-download的exportModule和exportModule_配置项，因为内部不存在这两个参数的处理，外部直接带入请求即可
+
 ### 1.0.20
 
 *2022-11-10*

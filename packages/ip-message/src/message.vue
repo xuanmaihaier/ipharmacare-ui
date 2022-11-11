@@ -129,6 +129,9 @@
 <script>
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
+import ElDropdown from 'element-ui/packages/dropdown';
+import ElDropdownMenu from 'element-ui/packages/dropdown-menu';
+
 export default {
   name: 'IpMessage',
   props: {
@@ -166,6 +169,10 @@ export default {
       default: '/syscenter/management/message-center/message-list'
     }
   },
+  components: {
+    'el-dropdown': ElDropdown,
+    'el-dropdown-menu': ElDropdownMenu
+  },
   data() {
     return {
       // 消息通知
@@ -173,7 +180,8 @@ export default {
       messageMenuBottom: 5,
       messageMaxHeight: 500,
       messageContainerHeight: 570,
-      messageOtherHeight: 70
+      messageOtherHeight: 70,
+      reconnectionCount: 1
     };
   },
   mounted() {
@@ -185,7 +193,6 @@ export default {
     window.addEventListener(
       'resize',
       () => {
-        this.$emit('setWindows', window.innerWidth);
         this.setMessageBoxHeight();
       },
       false

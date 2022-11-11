@@ -21,7 +21,6 @@
       @readMessage="readMessage"
       @readAllHandler="readAllHandler"
       @openUrl="openUrl"
-      @setWindows="setWindows"
     >
     </ip-message>
   </div>
@@ -125,11 +124,7 @@
         this.messageList.recordList.pop()
         cb()
         console.log('点击消息中的a链接', id)
-      },
-      setWindows(width) {
-        console.log('窗口缩放时触发', width)
-        // this.$store.dispatch('app/setWindows', window.innerWidth);
-      },
+      }
     },
   }
 </script>
@@ -154,7 +149,6 @@
 | 事件名称       | 说明                                                            | 回调参数                                     |
 | -------------- | --------------------------------------------------------------- | -------------------------------------------- |
 | getMsgList     | 获取列表数据的方法，会在组件 mounted 以及 socket 建立连接后触发 | -                                            |
-| readMessage    | 点击单条数据时触发                                              | messageId：点击的 id;callback:重置组件高度   |
+| readMessage    | 点击单条数据时触发                                              | messageId：点击的 id;callback：重置组件高度   |
 | readAllHandler | 点击全部已读触发                                                | callback:重置组件高度                        |
 | openUrl        | 点击消息卡片上的 a 链接触发                                     | messageId：点击的 id; callback：重置组件高度 |
-| setWindows     | 窗口缩放时触发                                                  | width：窗口宽度                              |

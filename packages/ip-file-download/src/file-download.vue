@@ -188,8 +188,7 @@ export default ({
     },
 
     clearFileList() {
-      let params = { exportModule: this.options.exportModule || null, exportModule_: this.options.exportModule_ || null };
-      this.$emit('clearFileList', params, () => {
+      this.$emit('clearFileList', () => {
         this.getFileList();
         this.confirmDialog.visible = false;
       });
@@ -200,8 +199,7 @@ export default ({
       if (!this.dialogVisible) {
         return;
       }
-      let params = { exportModule: this.options.exportModule || null, exportModule_: this.options.exportModule_ || null };
-      this.$emit('getFileList', params, needReloadFlag => {
+      this.$emit('getFileList', needReloadFlag => {
         if (needReloadFlag) {
           this.timeout = setTimeout(() => {
             this.getFileList();
