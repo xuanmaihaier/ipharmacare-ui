@@ -246,7 +246,7 @@ $navMenuHeight: 40px;
   color: #d9d9d9 !important;
 }
 
-i.meesage-unread-icon {
+/deep/ i.meesage-unread-icon {
   background: #f04134;
   width: 20px;
   padding: 4px;
@@ -259,8 +259,8 @@ i.meesage-unread-icon {
   position: absolute;
   line-height: 12px;
   font-style: normal;
-  top: -5px;
-  right: -10px;
+  top: 2px;
+  right: 0;
 }
 
 .extend-nav {

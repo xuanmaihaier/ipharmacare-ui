@@ -47,7 +47,7 @@
           pageSize: 9,
           status: 'STATUS_UNREAD',
         },
-        messageCount: 0,
+        messageCount: 99,
         messageList: {},
         pageResource: [
           {
