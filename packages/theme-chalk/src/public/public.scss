@@ -386,16 +386,16 @@ div::-webkit-scrollbar-corner {
 }
 
 /* 线性按钮与面性按钮样式 */
-.el-button--default {
+:root .el-button--default {
   color: #333333;
   border-color: #d9d9d9;
 }
 
 /* 文本类型按钮无边框 */
-.el-button--text, .el-button--text.is-disabled, .el-button--text.is-disabled:focus, .el-button--text.is-disabled:hover, .el-button--text:active {
+:root .el-button--text, .el-button--text.is-disabled, .el-button--text.is-disabled:focus, .el-button--text.is-disabled:hover, .el-button--text:active {
   border-color: transparent;
 }
 
-.el-button--primary {
+:root  .el-button--primary {
   color: #ffffff;
 }
