@@ -94,6 +94,7 @@ import IpFileDownload from '../packages/ip-file-download/index.js';
 import IpMessage from '../packages/ip-message/index.js';
 import IpMore from '../packages/ip-more/index.js';
 import IpTopbar from '../packages/ip-topbar/index.js';
+import IpSidebar from '../packages/ip-sidebar/index.js';
 import locale from 'element-ui/src/locale';
 import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
 
@@ -187,6 +188,7 @@ const components = [
   IpMessage,
   IpMore,
   IpTopbar,
+  IpSidebar,
   CollapseTransition
 ];
 
@@ -222,7 +224,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.0.23',
+  version: '1.0.24',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -320,5 +322,6 @@ export default {
   IpFileDownload,
   IpMessage,
   IpMore,
-  IpTopbar
+  IpTopbar,
+  IpSidebar
 };

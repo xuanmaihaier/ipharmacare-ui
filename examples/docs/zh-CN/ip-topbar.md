@@ -21,6 +21,7 @@
       title="逸曜信息"
       token="7"
       :pageResource="pageResource"
+      activeMenu="#report"
       socketUrl="syscenter/api/v1/config/websocketAddress"
       tempUrl="/syscenter/management/message-center/message-list/"
       messageListLink="/syscenter/management/message-center/message-list"
@@ -32,6 +33,8 @@
       @logout="logout"
       @setWindows="setWindows"
     >
+    <a href='#report'></a>
+    <a href='#manage'></a>
     </ip-topbar>
   </div>
 </template>
@@ -55,7 +58,7 @@
             status: 1,
             type: 0,
             systemId: 'cpod',
-            url: '#/report',
+            url: '#report',
             pId: '0',
             icon: 'icon-menu-report',
             remark: '',
@@ -120,7 +123,7 @@
             status: 1,
             type: 0,
             systemId: 'cpod',
-            url: '#/manage',
+            url: '#manage',
             pId: '0',
             icon: 'icon-menu-manage',
             remark: '',
@@ -353,7 +356,7 @@
 | minWidth        | 最小宽度                         | string  | —      | '1280px'                                             |
 | name            | 用户名                           | string  | —      | —                                                    |
 | title           | 系统名称                         | string  | —      | —                                                    |
-| path            | 当前路由的 path                  | string  | —      | /dashboard                                           |
+| activeMenu            | 当前路由的path                  | string  | —      | /dashboard                                           |
 | showMenu        | 是否显示头部路由菜单             | boolean | —      | true                                                 |
 | pageResource    | 从后端获取的路由表               | array   | —      | []                                                   |
 | messageCount    | 信息的条数，初始化的时候就要获取 | Number  | —      | 0                                                    |

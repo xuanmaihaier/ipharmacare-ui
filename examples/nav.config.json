@@ -329,6 +329,10 @@
             {
               "path": "/ip-topbar",
               "title": "IpTopbar 头部"
+            },
+            {
+              "path": "/ip-sidebar",
+              "title": "IpSidebar 侧边栏"
             }
           ]
         },

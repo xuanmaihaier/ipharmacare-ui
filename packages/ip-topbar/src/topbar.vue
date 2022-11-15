@@ -54,7 +54,7 @@ export default {
       type: String,
       require: true
     },
-    path: {
+    activeMenu: {
       type: String,
       default: '/dashboard'
     },
@@ -64,14 +64,6 @@ export default {
     }
   },
   computed: {
-    activeMenu() {
-      const path = this.path;
-      if (path === '/dashboard') {
-        return '/';
-      }
-      const activeMenu = '/' + path.split('/')[1];
-      return activeMenu;
-    },
     variables() {
       return variables;
     },
@@ -82,17 +74,17 @@ export default {
   },
   mounted() {
     // 窗口放大缩小
-    window.addEventListener(
-      'resize',
-      () => {
-        this.$emit('setWindows', window.innerWidth);
-        this.$refs.ipMessage.setMessageBoxHeight();
-        this.$refs.ipMore.setMenuHeight();
-      },
-      false
-    );
+    window.addEventListener('resize', this.resize, false);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.resize, false);
   },
   methods: {
+    resize() {
+      this.$emit('setWindows', window.innerWidth);
+      this.$refs.ipMessage.setMessageBoxHeight();
+      this.$refs.ipMore.setMenuHeight();
+    },
     resolvePath(item) {
       return item.url;
     },
