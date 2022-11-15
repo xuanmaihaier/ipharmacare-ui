@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-column sidebar-content classObj" id="ip-sidebar" style="position: relative">
+  <div class="flex flex-column sidebar-content" id="ip-sidebar" :style="`position: relative;width:${isCollapse?'54px':'200px'}`">
    <div :class="classObj">
     <div class="sidebar-container flex-1 flex flex-column">
       <el-scrollbar wrap-class="scrollbar-wrapper" class="flex-1">
@@ -35,14 +35,6 @@ export default {
     opened: {
       type: Boolean,
       default: true
-    },
-    withoutAnimation: {
-      type: Boolean,
-      default: false
-    },
-    device: {
-      type: String,
-      default: 'desktop'
     }
   },
   computed: {

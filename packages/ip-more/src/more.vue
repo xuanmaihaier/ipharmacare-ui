@@ -6,8 +6,8 @@
     </span>
     <el-dropdown-menu slot="dropdown" ref="dropdownMenu" class="extend-nav flex flex-column" style="width: 300px">
       <!-- 菜单主体 -->
-      <div v-if="extensionMenus && extensionMenus.length" class="flex-1 extend-nav-main" style="flex: 1 1 auto">
-        <el-dropdown-item v-for="(item, index) in extensionMenus" :key="index" class="extend-nav-item">
+      <div v-if="extensionMenusInit && extensionMenusInit.length" class="flex-1 extend-nav-main" style="flex: 1 1 auto">
+        <el-dropdown-item v-for="(item, index) in extensionMenusInit" :key="index" class="extend-nav-item">
           <div @click="blink(item)">
             <div class="extend-menus-name">
               <span class="extend-menus-img">
@@ -58,36 +58,42 @@ export default {
       default: '/web/static/images/top/'
     }
   },
+  computed: {
+    extensionMenusInit() {
+      return this.extensionMenus;
+    }
+  },
   watch: {
     extensionMenus: {
       handler: function() {
-        this.sortMenus(this.extensionMenus);
-        if (this.extensionMenus && this.extensionMenus.length) {
+        this.sortMenus(this.extensionMenusInit);
+        if (this.extensionMenusInit && this.extensionMenusInit.length) {
           this.extendMenuAllHeight =
-              this.extensionMenus.length * this.extendMenuItemHeight +
+              this.extensionMenusInit.length * this.extendMenuItemHeight +
               (this.extendMenuItemHeight +
                 this.extendMenuPading * 3 +
                 this.extendMenuAllBorder);
-          for (let i = 0; i < this.extensionMenus.length; i++) {
+          for (let i = 0; i < this.extensionMenusInit.length; i++) {
             if (
-              this.extensionMenus[i].children &&
-                this.extensionMenus[i].children.length
+              this.extensionMenusInit[i].children &&
+                this.extensionMenusInit[i].children.length
             ) {
-              this.sortMenus(this.extensionMenus[i].children);
+              this.sortMenus(this.extensionMenusInit[i].children);
               let str = '';
               for (
                 let k = 0;
-                k < this.extensionMenus[i].children.length;
+                k < this.extensionMenusInit[i].children.length;
                 k++
               ) {
-                str += '.' + this.extensionMenus[i].children[k].name;
+                str += '.' + this.extensionMenusInit[i].children[k].name;
               }
-              this.extensionMenus[i]['navName'] = str;
+              this.extensionMenusInit[i]['navName'] = str;
             }
           }
         }
       },
-      deep: true
+      deep: true,
+      immediate: true
     }
   },
   data() {
