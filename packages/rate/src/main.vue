@@ -33,9 +33,9 @@
 </template>
 
 <script>
-  import { hasClass } from 'element-ui/src/utils/dom';
-  import { isObject } from 'element-ui/src/utils/types';
-  import Migrating from 'element-ui/src/mixins/migrating';
+  import { hasClass } from 'web-vue2-front-end-lib/src/utils/dom';
+  import { isObject } from 'web-vue2-front-end-lib/src/utils/types';
+  import Migrating from 'web-vue2-front-end-lib/src/mixins/migrating';
 
   export default {
     name: 'ElRate',

@@ -7,7 +7,7 @@
   </form>
 </template>
 <script>
-  import objectAssign from 'element-ui/src/utils/merge';
+  import objectAssign from 'web-vue2-front-end-lib/src/utils/merge';
 
   export default {
     name: 'ElForm',

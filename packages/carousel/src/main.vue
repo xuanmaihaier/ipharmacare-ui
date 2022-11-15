@@ -56,7 +56,7 @@
 
 <script>
 import throttle from 'throttle-debounce/throttle';
-import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
+import { addResizeListener, removeResizeListener } from 'web-vue2-front-end-lib/src/utils/resize-event';
 
 export default {
   name: 'ElCarousel',

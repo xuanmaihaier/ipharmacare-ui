@@ -30,7 +30,7 @@
 <script>
 
 import AppLink from './components/Link';
-import variables from 'element-ui/packages/theme-chalk/src/public/variables.scss';
+import variables from 'web-vue2-front-end-lib/packages/theme-chalk/src/public/variables.scss';
 
 export default {
   name: 'IpTopbar',

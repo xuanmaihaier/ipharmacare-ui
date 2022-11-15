@@ -1,4 +1,4 @@
-import { hasOwn } from 'element-ui/src/utils/util';
+import { hasOwn } from 'web-vue2-front-end-lib/src/utils/util';
 
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
 /**

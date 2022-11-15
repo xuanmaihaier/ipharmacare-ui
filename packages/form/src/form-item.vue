@@ -40,9 +40,9 @@
 </template>
 <script>
   import AsyncValidator from 'async-validator';
-  import emitter from 'element-ui/src/mixins/emitter';
-  import objectAssign from 'element-ui/src/utils/merge';
-  import { noop, getPropByPath } from 'element-ui/src/utils/util';
+  import emitter from 'web-vue2-front-end-lib/src/mixins/emitter';
+  import objectAssign from 'web-vue2-front-end-lib/src/utils/merge';
+  import { noop, getPropByPath } from 'web-vue2-front-end-lib/src/utils/util';
   import LabelWrap from './label-wrap';
   export default {
     name: 'ElFormItem',

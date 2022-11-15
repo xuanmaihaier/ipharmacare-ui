@@ -1,6 +1,6 @@
-import objectAssign from 'element-ui/src/utils/merge';
+import objectAssign from 'web-vue2-front-end-lib/src/utils/merge';
 import { markNodeData, NODE_KEY } from './util';
-import { arrayFindIndex } from 'element-ui/src/utils/util';
+import { arrayFindIndex } from 'web-vue2-front-end-lib/src/utils/util';
 
 export const getChildState = node => {
   let all = true;

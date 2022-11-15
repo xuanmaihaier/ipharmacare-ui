@@ -75,10 +75,10 @@
   </div>
 </template>
 <script>
-import ElButton from 'element-ui/packages/button';
-import ElDialog from 'element-ui/packages/dialog';
-import ElTable from 'element-ui/packages/table';
-import ElTableColumn from 'element-ui/packages/table-column';
+import ElButton from 'web-vue2-front-end-lib/packages/button';
+import ElDialog from 'web-vue2-front-end-lib/packages/dialog';
+import ElTable from 'web-vue2-front-end-lib/packages/table';
+import ElTableColumn from 'web-vue2-front-end-lib/packages/table-column';
 export default ({
   name: 'IpFileDownload',
   props: {

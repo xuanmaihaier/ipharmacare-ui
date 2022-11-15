@@ -9,7 +9,7 @@
   </component>
 </template>
 <script>
-  import Emitter from 'element-ui/src/mixins/emitter';
+  import Emitter from 'web-vue2-front-end-lib/src/mixins/emitter';
 
   const keyCode = Object.freeze({
     LEFT: 37,

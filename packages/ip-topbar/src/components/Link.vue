@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { isExternal } from 'element-ui/src/utils/validate';
+import { isExternal } from 'web-vue2-front-end-lib/src/utils/validate';
 
 export default {
   props: {

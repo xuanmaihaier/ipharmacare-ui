@@ -1,8 +1,8 @@
 <script>
-import ElScrollbar from 'element-ui/packages/scrollbar';
+import ElScrollbar from 'web-vue2-front-end-lib/packages/scrollbar';
 import CascaderNode from './cascader-node.vue';
-import Locale from 'element-ui/src/mixins/locale';
-import { generateId } from 'element-ui/src/utils/util';
+import Locale from 'web-vue2-front-end-lib/src/mixins/locale';
+import { generateId } from 'web-vue2-front-end-lib/src/utils/util';
 
 export default {
   name: 'ElCascaderMenu',

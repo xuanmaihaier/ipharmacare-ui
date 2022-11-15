@@ -1,4 +1,4 @@
-import { t } from 'element-ui/src/locale';
+import { t } from 'web-vue2-front-end-lib/src/locale';
 
 export default {
   methods: {

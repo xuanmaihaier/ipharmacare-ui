@@ -83,8 +83,8 @@
 <script>
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
-import ElDropdown from 'element-ui/packages/dropdown';
-import ElDropdownMenu from 'element-ui/packages/dropdown-menu';
+import ElDropdown from 'web-vue2-front-end-lib/packages/dropdown';
+import ElDropdownMenu from 'web-vue2-front-end-lib/packages/dropdown-menu';
 
 export default {
   name: 'IpMessage',

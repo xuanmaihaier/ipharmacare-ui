@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Loading from './loading.vue';
-import { addClass, removeClass, getStyle } from 'element-ui/src/utils/dom';
-import { PopupManager } from 'element-ui/src/utils/popup';
-import afterLeave from 'element-ui/src/utils/after-leave';
+import { addClass, removeClass, getStyle } from 'web-vue2-front-end-lib/src/utils/dom';
+import { PopupManager } from 'web-vue2-front-end-lib/src/utils/popup';
+import afterLeave from 'web-vue2-front-end-lib/src/utils/after-leave';
 const Mask = Vue.extend(Loading);
 
 const loadingDirective = {};

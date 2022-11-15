@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import { autoprefixer } from 'element-ui/src/utils/util';
+  import { autoprefixer } from 'web-vue2-front-end-lib/src/utils/util';
   const CARD_SCALE = 0.83;
   export default {
     name: 'ElCarouselItem',

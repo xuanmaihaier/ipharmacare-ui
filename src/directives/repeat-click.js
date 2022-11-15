@@ -1,4 +1,4 @@
-import { once, on } from 'element-ui/src/utils/dom';
+import { once, on } from 'web-vue2-front-end-lib/src/utils/dom';
 
 export default {
   bind(el, binding, vnode) {

@@ -18,9 +18,9 @@
   </transition>
 </template>
 <script>
-  import Popper from 'element-ui/src/utils/vue-popper';
-  import Emitter from 'element-ui/src/mixins/emitter';
-  import ElScrollbar from 'element-ui/packages/scrollbar';
+  import Popper from 'web-vue2-front-end-lib/src/utils/vue-popper';
+  import Emitter from 'web-vue2-front-end-lib/src/mixins/emitter';
+  import ElScrollbar from 'web-vue2-front-end-lib/packages/scrollbar';
 
   export default {
     components: { ElScrollbar },

@@ -23,9 +23,9 @@
 
 <script>
   import ImageViewer from './image-viewer';
-  import Locale from 'element-ui/src/mixins/locale';
-  import { on, off, getScrollContainer, isInContainer } from 'element-ui/src/utils/dom';
-  import { isString, isHtmlElement } from 'element-ui/src/utils/types';
+  import Locale from 'web-vue2-front-end-lib/src/mixins/locale';
+  import { on, off, getScrollContainer, isInContainer } from 'web-vue2-front-end-lib/src/utils/dom';
+  import { isString, isHtmlElement } from 'web-vue2-front-end-lib/src/utils/types';
   import throttle from 'throttle-debounce/throttle';
 
   const isSupportObjectFit = () => document.documentElement.style.objectFit !== undefined;

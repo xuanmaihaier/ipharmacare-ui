@@ -1,7 +1,7 @@
-import Popper from 'element-ui/src/utils/vue-popper';
+import Popper from 'web-vue2-front-end-lib/src/utils/vue-popper';
 import debounce from 'throttle-debounce/debounce';
-import { addClass, removeClass, on, off } from 'element-ui/src/utils/dom';
-import { generateId } from 'element-ui/src/utils/util';
+import { addClass, removeClass, on, off } from 'web-vue2-front-end-lib/src/utils/dom';
+import { generateId } from 'web-vue2-front-end-lib/src/utils/util';
 import Vue from 'vue';
 
 export default {

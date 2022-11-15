@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import ElForm from 'element-ui/packages/form';
-import ElRow from 'element-ui/packages/row';
-import ElCol from 'element-ui/packages/col';
-import ElFormItem from 'element-ui/packages/form-item';
+import ElForm from 'web-vue2-front-end-lib/packages/form';
+import ElRow from 'web-vue2-front-end-lib/packages/row';
+import ElCol from 'web-vue2-front-end-lib/packages/col';
+import ElFormItem from 'web-vue2-front-end-lib/packages/form-item';
 
 export default {
   name: 'IpSearchContainer',

@@ -54,7 +54,7 @@
   </label>
 </template>
 <script>
-  import Emitter from 'element-ui/src/mixins/emitter';
+  import Emitter from 'web-vue2-front-end-lib/src/mixins/emitter';
 
   export default {
     name: 'ElCheckbox',

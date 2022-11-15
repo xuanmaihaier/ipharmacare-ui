@@ -1,4 +1,4 @@
-import { getPropByPath } from 'element-ui/src/utils/util';
+import { getPropByPath } from 'web-vue2-front-end-lib/src/utils/util';
 
 export const cellStarts = {
   default: {

@@ -202,13 +202,13 @@
     nextDate,
     extractDateFormat,
     extractTimeFormat
-  } from 'element-ui/src/utils/date-util';
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
-  import Locale from 'element-ui/src/mixins/locale';
+  } from 'web-vue2-front-end-lib/src/utils/date-util';
+  import Clickoutside from 'web-vue2-front-end-lib/src/utils/clickoutside';
+  import Locale from 'web-vue2-front-end-lib/src/mixins/locale';
   import TimePicker from './time';
   import DateTable from '../basic/date-table';
-  import ElInput from 'element-ui/packages/input';
-  import ElButton from 'element-ui/packages/button';
+  import ElInput from 'web-vue2-front-end-lib/packages/input';
+  import ElButton from 'web-vue2-front-end-lib/packages/button';
 
   const calcDefaultValue = (defaultValue) => {
     if (Array.isArray(defaultValue)) {

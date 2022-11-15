@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import ElPagination from 'element-ui/packages/pagination';
+import ElPagination from 'web-vue2-front-end-lib/packages/pagination';
 export default {
   name: 'IpPagination',
   components: {

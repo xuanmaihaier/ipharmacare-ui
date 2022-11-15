@@ -157,15 +157,15 @@
 
 <script>
 import { treeApi } from "./api.js";
-import { ElDialog } from "element-ui/packages/dialog";
-import { ElForm } from "element-ui/packages/form";
-import { ElFormItem } from "element-ui/packages/form-item";
-import { ElButton } from "element-ui/packages/button";
-import { Tree } from "element-ui/packages/tree";
-import { Tooltip } from "element-ui/packages/tooltip";
-import { Select } from "element-ui/packages/select";
-import { ElOption } from "element-ui/packages/option";
-import { ElInput } from "element-ui/packages/input";
+import { ElDialog } from "web-vue2-front-end-lib/packages/dialog";
+import { ElForm } from "web-vue2-front-end-lib/packages/form";
+import { ElFormItem } from "web-vue2-front-end-lib/packages/form-item";
+import { ElButton } from "web-vue2-front-end-lib/packages/button";
+import { Tree } from "web-vue2-front-end-lib/packages/tree";
+import { Tooltip } from "web-vue2-front-end-lib/packages/tooltip";
+import { Select } from "web-vue2-front-end-lib/packages/select";
+import { ElOption } from "web-vue2-front-end-lib/packages/option";
+import { ElInput } from "web-vue2-front-end-lib/packages/input";
 
 export default {
   name: "IpTree",

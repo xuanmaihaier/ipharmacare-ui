@@ -1,8 +1,8 @@
 <script type="text/jsx">
-  import emitter from 'element-ui/src/mixins/emitter';
-  import Migrating from 'element-ui/src/mixins/migrating';
-  import Menubar from 'element-ui/src/utils/menu/aria-menubar';
-  import { addClass, removeClass, hasClass } from 'element-ui/src/utils/dom';
+  import emitter from 'web-vue2-front-end-lib/src/mixins/emitter';
+  import Migrating from 'web-vue2-front-end-lib/src/mixins/migrating';
+  import Menubar from 'web-vue2-front-end-lib/src/utils/menu/aria-menubar';
+  import { addClass, removeClass, hasClass } from 'web-vue2-front-end-lib/src/utils/dom';
 
   export default {
     name: 'ElMenu',

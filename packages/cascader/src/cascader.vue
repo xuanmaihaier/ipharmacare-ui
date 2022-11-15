@@ -112,21 +112,21 @@
 </template>
 
 <script>
-import Popper from 'element-ui/src/utils/vue-popper';
-import Clickoutside from 'element-ui/src/utils/clickoutside';
-import Emitter from 'element-ui/src/mixins/emitter';
-import Locale from 'element-ui/src/mixins/locale';
-import Migrating from 'element-ui/src/mixins/migrating';
-import ElInput from 'element-ui/packages/input';
-import ElTag from 'element-ui/packages/tag';
-import ElScrollbar from 'element-ui/packages/scrollbar';
-import ElCascaderPanel from 'element-ui/packages/cascader-panel';
-import AriaUtils from 'element-ui/src/utils/aria-utils';
-import { t } from 'element-ui/src/locale';
-import { isEqual, isEmpty, kebabCase } from 'element-ui/src/utils/util';
-import { isUndefined, isFunction } from 'element-ui/src/utils/types';
-import { isDef } from 'element-ui/src/utils/shared';
-import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
+import Popper from 'web-vue2-front-end-lib/src/utils/vue-popper';
+import Clickoutside from 'web-vue2-front-end-lib/src/utils/clickoutside';
+import Emitter from 'web-vue2-front-end-lib/src/mixins/emitter';
+import Locale from 'web-vue2-front-end-lib/src/mixins/locale';
+import Migrating from 'web-vue2-front-end-lib/src/mixins/migrating';
+import ElInput from 'web-vue2-front-end-lib/packages/input';
+import ElTag from 'web-vue2-front-end-lib/packages/tag';
+import ElScrollbar from 'web-vue2-front-end-lib/packages/scrollbar';
+import ElCascaderPanel from 'web-vue2-front-end-lib/packages/cascader-panel';
+import AriaUtils from 'web-vue2-front-end-lib/src/utils/aria-utils';
+import { t } from 'web-vue2-front-end-lib/src/locale';
+import { isEqual, isEmpty, kebabCase } from 'web-vue2-front-end-lib/src/utils/util';
+import { isUndefined, isFunction } from 'web-vue2-front-end-lib/src/utils/types';
+import { isDef } from 'web-vue2-front-end-lib/src/utils/shared';
+import { addResizeListener, removeResizeListener } from 'web-vue2-front-end-lib/src/utils/resize-event';
 import debounce from 'throttle-debounce/debounce';
 
 const { keys: KeyCode } = AriaUtils;

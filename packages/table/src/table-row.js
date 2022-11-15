@@ -1,4 +1,4 @@
-import ElCheckbox from 'element-ui/packages/checkbox';
+import ElCheckbox from 'web-vue2-front-end-lib/packages/checkbox';
 export default {
   name: 'ElTableRow',
   props: [

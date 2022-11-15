@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import Popup from 'element-ui/src/utils/popup';
-import emitter from 'element-ui/src/mixins/emitter';
+import Popup from 'web-vue2-front-end-lib/src/utils/popup';
+import emitter from 'web-vue2-front-end-lib/src/mixins/emitter';
 
 export default {
   name: 'ElDrawer',
