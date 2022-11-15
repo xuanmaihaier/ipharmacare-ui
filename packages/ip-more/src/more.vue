@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     extensionMenusInit() {
-      return this.extensionMenus;
+      return JSON.parse(JSON.stringify(this.extensionMenus));
     }
   },
   watch: {

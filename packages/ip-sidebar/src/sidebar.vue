@@ -35,6 +35,14 @@ export default {
     opened: {
       type: Boolean,
       default: true
+    },
+    withoutAnimation: {
+      type: Boolean,
+      default: false
+    },
+    device: {
+      type: String,
+      default: 'desktop'
     }
   },
   computed: {
