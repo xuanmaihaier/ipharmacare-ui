@@ -1,8 +1,9 @@
+@import "common/var";
 @font-face {
   font-family: "iconfont"; /* Project id 582773 */
-  src: url('#{$--iconfont-path}/iconfont.woff2?t=1667811730545') format('woff2'),
-       url('#{$--iconfont-path}/iconfont.woff?t=1667811730545') format('woff'),
-       url('#{$--iconfont-path}/iconfont.ttf?t=1667811730545') format('truetype');
+  src: url('#{$--font-path}/iconfont.woff2?t=1667811730545') format('woff2'),
+       url('#{$--font-path}/iconfont.woff?t=1667811730545') format('woff'),
+       url('#{$--font-path}/iconfont.ttf?t=1667811730545') format('truetype');
 }
 
 .iconfont {
