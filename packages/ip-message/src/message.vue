@@ -140,7 +140,7 @@ export default {
   },
   mounted() {
     this.getMsgList();
-    if (this.userId) {
+    if (this.userId && this.socketUrl) {
       this.reconnect(this.socketUrl);
     }
   },
