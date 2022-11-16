@@ -2,7 +2,6 @@ src/utils/popper.js
 src/utils/date.js
 packages/theme-chalk/src/fonts
 examples/play
-packages/ip-tree
 *.sh
 node_modules
 lib
