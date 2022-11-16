@@ -123,11 +123,6 @@ export default {
       default: '/syscenter/management/message-center/message-list'
     }
   },
-  computed: {
-    messageCountInit() {
-      return this.messageCount;
-    }
-  },
   components: {
     'el-dropdown': ElDropdown,
     'el-dropdown-menu': ElDropdownMenu
@@ -140,7 +135,8 @@ export default {
       messageMaxHeight: 500,
       messageContainerHeight: 570,
       messageOtherHeight: 70,
-      reconnectionCount: 1
+      reconnectionCount: 1,
+      messageCountInit: 0
     };
   },
   mounted() {
@@ -152,6 +148,12 @@ export default {
         if (this.userId && this.socketUrl) {
           this.reconnect(this.socketUrl);
         }
+      },
+      immediate: true
+    },
+    messageCount: {
+      handler: function() {
+        this.messageCountInit = this.messageCount;
       },
       immediate: true
     }
