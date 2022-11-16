@@ -4,10 +4,10 @@
     <span class="el-dropdown-link">
       <span class="iconfont icon-notice" style="vertical-align: center;padding-right: 5px" />
       <span>消息</span>
-      <i v-if="messageCount > 0 && messageCount <= 9" class="meesage-unread-icon">
-        {{ messageCount }}
+      <i v-if="messageCountInit > 0 && messageCountInit <= 9" class="meesage-unread-icon">
+        {{ messageCountInit }}
       </i>
-      <i v-if="messageCount > 9" class="meesage-unread-icon"> 9+ </i>
+      <i v-if="messageCountInit > 9" class="meesage-unread-icon"> 9+ </i>
     </span>
     <el-dropdown-menu slot="dropdown" ref="msgDropdownMenu" style="width: 330px; padding: 0"
       class="flex flex-column">
@@ -123,6 +123,11 @@ export default {
       default: '/syscenter/management/message-center/message-list'
     }
   },
+  computed: {
+    messageCountInit() {
+      return this.messageCount;
+    }
+  },
   components: {
     'el-dropdown': ElDropdown,
     'el-dropdown-menu': ElDropdownMenu
@@ -217,7 +222,7 @@ export default {
             '/user/' + this.userId + '/notice/message',
             data => {
               if (data && data.body) {
-                this.messageCount = Number(data.body);
+                this.messageCountInit = Number(data.body);
                 this.getMsgList();
               }
             }
