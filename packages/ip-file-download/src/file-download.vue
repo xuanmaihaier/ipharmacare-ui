@@ -47,13 +47,13 @@
                 <template slot-scope="scope">
                   <div class="export-btn">
                     <span class="export-btn-download"
-                      :style="`color:${scope.row.exportStatus !== 2 ? '#B7B7B7' : '#2584FF'}`"
+                      :style="`color:${scope.row[statusKey] !== 2 ? '#B7B7B7' : '#2584FF'}`"
                       @click="downloadFile(scope.row)">
                       下载
                     </span>
                     <b> | </b>
                     <span @click="showConfirmDialog('deleteItem', scope.row)"
-                      :style="`color:${scope.row.exportStatus === 1 ? '#B7B7B7' : '#2584FF'}`"
+                      :style="`color:${scope.row[statusKey] === 1 ? '#B7B7B7' : '#2584FF'}`"
                       class="export-btn-delete">删除</span>
                   </div>
                 </template>
@@ -160,12 +160,7 @@ export default ({
       if (file && file[this.statusKey] !== 2) return;
       clearTimeout(this.getFileListTimeout);
       let params = { censusId: file.id };
-      let a = document.createElement('a');
-      this.$emit('downloadFile', params, a);
-      this.$nextTick(() => {
-        a.click();
-        a.remove();
-      });
+      this.$emit('downloadFile', params);
       this.getFileListTimeout = setTimeout(() => {
         this.getFileList();
       }, 500);

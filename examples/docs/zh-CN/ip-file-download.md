@@ -4,7 +4,7 @@
 
 ### 基础用法
 
-:::demo 设置`ref`，点击导出通过ref上的toggleDialogVisible触发显示；设置`statusKey`，表示文件列表中文件状态的key，目前value与后端限定的是0未开始，1生成中，2生成成功，3生成失败；设置`options`是组件的配置项，提供组件长度`width`，`hiddenColProps`可以去隐藏特定的列；设置`disabled`可以设置导出按钮是否可以点击；`loading`是导出列表的加载loading；`tableData`则是表格列表的数据源；`downloadFile`方法为下载，暴露出的a，只需在父组件中设置a.href即可实现下载；`handlerTableExportClick`为点击导出按钮触发的方法，控制弹窗的显示隐藏；`getFileList`为获取数据源，可以通过是否存在未开始、生成中的数据进行定时重新获取，通过flag触发回调即可；`deleteFile`与`clearFileList`分别是删除单个数据与删除所有数据，其回调同样会触发`getFileList`以及确认弹窗的关闭。
+:::demo 设置`ref`，点击导出通过ref上的toggleDialogVisible触发显示；设置`statusKey`，表示文件列表中文件状态的key，目前value与后端限定的是0未开始，1生成中，2生成成功，3生成失败；设置`options`是组件的配置项，提供组件长度`width`，`hiddenColProps`可以去隐藏特定的列；设置`disabled`可以设置导出按钮是否可以点击；`loading`是导出列表的加载loading；`tableData`则是表格列表的数据源；`downloadFile`方法为下载，暴露出的id在父组件请求并打开链接即可；`handlerTableExportClick`为点击导出按钮触发的方法，控制弹窗的显示隐藏；`getFileList`为获取数据源，可以通过是否存在未开始、生成中的数据进行定时重新获取，通过flag触发回调即可；`deleteFile`与`clearFileList`分别是删除单个数据与删除所有数据，其回调同样会触发`getFileList`以及确认弹窗的关闭。
 
 ```html
 <template>
@@ -145,10 +145,15 @@
         this.fileTableList = []
         callback()
       },
-      downloadFile(parmas, a) {
-        console.log(id, a)
+      downloadFile(parmas) {
+        console.log(parmas)
+        const a = document.createElement('a')
+        // a.href = downloadApi.getExportFileData(params)
         // code 200
-        a.href = '/intervene/pgintervene/file/downloadFileById?censusId=15224'
+      //   this.$nextTick(() => {
+      //   a.click()
+      //   a.remove()
+      // })
       },
     },
   }
