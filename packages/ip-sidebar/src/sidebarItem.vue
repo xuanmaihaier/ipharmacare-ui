@@ -4,14 +4,14 @@
       <app-link :to="resolvePath(onlyOneChild.url)">
         <el-menu-item :index="resolvePath(onlyOneChild.url)" :class="{'submenu-title-noDropdown':!isNest}">
           <!-- 没有有子菜单的父级菜单 -->
-          <item icon="dotted" :title="onlyOneChild.name" :min-title="item.name.slice(0,2)" :is-collapse="isCollapse" />
+          <item icon="dotted" :title="onlyOneChild.name" :min-title="item.shortName || item.name.slice(0,2)" :is-collapse="isCollapse" />
         </el-menu-item>
       </app-link>
     </template>
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.url)" popper-append-to-body>
       <template slot="title">
         <!-- 有子菜单的父级菜单 -->
-        <item v-if="item.meta" icon="dotted" :title="item.name" :min-title="item.name.slice(0,2)" :is-collapse="isCollapse" />
+        <item icon="dotted" :title="item.name" :min-title="item.shortName || item.name.slice(0,2)" :is-collapse="isCollapse" />
       </template>
       <sidebar-item v-for="child in item.children" :key="child.url" :is-nest="true" :item="child" :base-path="resolvePath(child.url)" class="nest-menu" />
     </el-submenu>

@@ -62,6 +62,9 @@ export default {
         withoutAnimation: this.withoutAnimation,
         mobile: this.device === 'mobile'
       };
+    },
+    mounted() {
+      console.log(this.routes);
     }
   }
 };
@@ -77,8 +80,12 @@ export default {
 }
 
 /deep/.el-menu-item.is-active {
-  color: #5c8ef7 !important;
-  background-color: #fff !important;
+  color: #4585ff !important;
+  border-right: 4px solid #4585ff;
+  box-sizing: border-box;
+  background: #f3f7fe !important;
+  position: relative;
+  font-weight: 600;
 }
 
 /deep/.el-menu-item {
