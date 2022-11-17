@@ -18,7 +18,7 @@
                 class="icon el-icon-delete"></i>清空</el-button>
             <el-button size="mini" @click="getFileList"><i class="icon el-icon-refresh-right"></i>刷新</el-button>
           </div>
-          <div class="flex flex-column flex-1" v-if="tableData.length">
+          <div class="flex flex-column flex-1">
             <el-table border class="flex-1" :data="tableData" style="width: 100%" height="a" highlight-current-row
               v-loading="loading">
               <el-table-column label="序号" width="60" :resizable="false">

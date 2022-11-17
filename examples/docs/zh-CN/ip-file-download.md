@@ -11,7 +11,6 @@
   <div class="block">
     <ip-file-download
       ref="ReportFileRef"
-      statusKey="exportStatus"
       :options="downloadOptions"
       :disabled="disabled"
       :loading="loading"
@@ -147,7 +146,7 @@
       },
       downloadFile(parmas) {
         console.log(parmas)
-        const a = document.createElement('a')
+        // const a = document.createElement('a')
         // a.href = downloadApi.getExportFileData(params)
         // code 200
       //   this.$nextTick(() => {
@@ -177,7 +176,7 @@
 | 事件名称       | 说明                               | 回调参数 |
 | -------------- | ---------------------------------- | -------- |
 | handlerTableExportClick | 点击导出按钮触发，通过`this.$refs['ReportFileRef'].toggleDialogVisible()`设置组件的显示 | \ |
-| downloadFile   | 点击下载时触发；parmas为点击的id；通过回调参数中的a.href设置跳转链接  | params, a |
+| downloadFile   | 点击下载时触发  | params |
 | getFileList    | 获取导出文件列表；callback函数中如果传入true,会执行内部定时器，可以通过list数据中是否存在未生成、生成中的数据来判断是否执行callback  | parmas, callback |
 | deleteFile     | 删除单个文件；parmas为文件id；callback执行会触发关闭二次确认窗口并重新执行getFileList，可以在发送请求200后执行  | parmas, callback |
 | clearFileList  | 删除所有文件；callback执行会触发关闭二次确认窗口并重新执行getFileList，可以在发送请求200后执行  | parmas, callback |
