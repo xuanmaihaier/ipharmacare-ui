@@ -62,9 +62,6 @@ export default {
         withoutAnimation: this.withoutAnimation,
         mobile: this.device === 'mobile'
       };
-    },
-    mounted() {
-      console.log(this.routes);
     }
   }
 };
