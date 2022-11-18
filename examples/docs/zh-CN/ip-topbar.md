@@ -33,6 +33,7 @@
       @logout="logout"
       @setWindows="setWindows"
     >
+    <i slot="logo" style="margin-right:5px;font-size:15px" class="el-icon-takeaway-box" />
     <a href='#report'></a>
     <a href='#manage'></a>
     </ip-topbar>
@@ -380,3 +381,8 @@
 | readMessage    | 点击单条数据时触发                                                             | messageId：点击的 id;callback：重置组件高度  |
 | readAllHandler | 点击全部已读触发                                                               | callback:重置组件高度                        |
 | openUrl        | 点击消息卡片上的 a 链接触发                                                    | messageId：点击的 id; callback：重置组件高度 |
+
+### Slot
+| name | 说明 |
+|------|--------|
+| logo | 标题前的图标，如果存在图标使用slot写即可 |

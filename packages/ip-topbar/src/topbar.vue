@@ -1,6 +1,9 @@
 <template>
   <div class="top-nav" :style="`min-width:${minWidth}`">
-    <div class="log">{{ title }}</div>
+    <div class="log">
+      <slot name="logo"></slot>
+      {{ title }}
+    </div>
     <el-menu v-if="showMenu" :active-text-color="variables.menuActiveText" :default-active="activeMenu" mode="horizontal"
       @select="handleSelect">
       <div v-for="item in pageResource" :key="item.url" class="nav-item">
