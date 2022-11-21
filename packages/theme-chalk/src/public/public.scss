@@ -138,7 +138,10 @@
 }
 
 /* 表单筛选项的样式 */
-:root .el-form-item__content {
+:root .el-form-item__content,
+:root .el-form-item--mini .el-form-item__content,
+:root .el-form-item--small .el-form-item__content,
+:root .el-input--medium .el-form-item__content {
   line-height: 28px;
 }
 
