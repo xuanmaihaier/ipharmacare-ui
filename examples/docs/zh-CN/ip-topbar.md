@@ -22,7 +22,7 @@
       token="7"
       :pageResource="pageResource"
       activeMenu="#report"
-      socketUrl="syscenter/api/v1/config/websocketAddress"
+      socketUrl=""
       tempUrl="/syscenter/management/message-center/message-list/"
       messageListLink="/syscenter/management/message-center/message-list"
       @getMsgList="getMsgList"

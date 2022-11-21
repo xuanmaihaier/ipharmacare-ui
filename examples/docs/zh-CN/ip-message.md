@@ -14,7 +14,7 @@
       :messageList="messageList"
       :userId="-200"
       token="7"
-      socketUrl="syscenter/api/v1/config/websocketAddress"
+      socketUrl=""
       tempUrl="/syscenter/management/message-center/message-list/"
       messageListLink="/syscenter/management/message-center/message-list"
       @getMsgList="getMsgList"
