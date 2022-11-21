@@ -1,6 +1,6 @@
 {
   "name": "web-vue2-front-end-lib-theme-chalk",
-  "version": "1.0.41",
+  "version": "1.0.42",
   "description": "Element component chalk theme.",
   "main": "lib/index.css",
   "style": "lib/index.css",
