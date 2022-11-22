@@ -19,7 +19,7 @@
         <el-dropdown trigger="click" class="user-btn">
           <span class="el-dropdown-link">
             <span class="iconfont icon-user" style="vertical-align: center;padding-right: 5px" />
-            <span style="margin-left: -1px">{{ name }}</span>
+            <span style="margin-left: -1px;line-height: 40px;">{{ name }}</span>
           </span>
           <el-dropdown-menu slot="dropdown" class="outLoginMenu">
             <el-dropdown-item class="outLogin" @click.native="logout">退出登录</el-dropdown-item>
@@ -354,7 +354,7 @@ $navMenuHeight: 40px;
 }
 
 .el-popper[x-placement^='bottom'] {
-  margin-top: 5px;
+  margin-top: -3px;
   // top: 32px !important;
 }
 
