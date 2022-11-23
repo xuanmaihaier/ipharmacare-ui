@@ -1,7 +1,7 @@
 /**
 树结构的api接口
 */
-import { post } from '@/http/http';
+import { post } from 'web-vue2-front-end-lib/src/utils/http.js';
 
 const host = 'http://10.1.1.156:9999';
 

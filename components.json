@@ -93,5 +93,6 @@
   "ip-message": "./packages/ip-message/index.js",
   "ip-more": "./packages/ip-more/index.js",
   "ip-topbar": "./packages/ip-topbar/index.js",
-  "ip-sidebar": "./packages/ip-sidebar/index.js"
+  "ip-sidebar": "./packages/ip-sidebar/index.js",
+  "ip-tree": "./packages/ip-tree/index.js"
 }

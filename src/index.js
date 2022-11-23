@@ -95,6 +95,7 @@ import IpMessage from '../packages/ip-message/index.js';
 import IpMore from '../packages/ip-more/index.js';
 import IpTopbar from '../packages/ip-topbar/index.js';
 import IpSidebar from '../packages/ip-sidebar/index.js';
+import IpTree from '../packages/ip-tree/index.js';
 import locale from 'web-vue2-front-end-lib/src/locale';
 import CollapseTransition from 'web-vue2-front-end-lib/src/transitions/collapse-transition';
 
@@ -189,6 +190,7 @@ const components = [
   IpMore,
   IpTopbar,
   IpSidebar,
+  IpTree,
   CollapseTransition
 ];
 
@@ -224,7 +226,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.0.47',
+  version: '1.0.45',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -323,5 +325,6 @@ export default {
   IpMessage,
   IpMore,
   IpTopbar,
-  IpSidebar
+  IpSidebar,
+  IpTree
 };

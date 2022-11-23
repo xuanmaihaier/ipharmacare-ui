@@ -156,19 +156,19 @@
 </template>
 
 <script>
-import { treeApi } from "./api.js";
-import { ElDialog } from "web-vue2-front-end-lib/packages/dialog";
-import { ElForm } from "web-vue2-front-end-lib/packages/form";
-import { ElFormItem } from "web-vue2-front-end-lib/packages/form-item";
-import { ElButton } from "web-vue2-front-end-lib/packages/button";
-import { Tree } from "web-vue2-front-end-lib/packages/tree";
-import { Tooltip } from "web-vue2-front-end-lib/packages/tooltip";
-import { Select } from "web-vue2-front-end-lib/packages/select";
-import { ElOption } from "web-vue2-front-end-lib/packages/option";
-import { ElInput } from "web-vue2-front-end-lib/packages/input";
-
+import treeApi from './api.js';
+import ElDialog from 'web-vue2-front-end-lib/packages/dialog';
+import ElForm from 'web-vue2-front-end-lib/packages/form';
+import ElFormItem from 'web-vue2-front-end-lib/packages/form-item';
+import ElButton from 'web-vue2-front-end-lib/packages/button';
+import Tree from 'web-vue2-front-end-lib/packages/tree';
+import Tooltip from 'web-vue2-front-end-lib/packages/tooltip';
+import Select from 'web-vue2-front-end-lib/packages/select';
+import ElOption from 'web-vue2-front-end-lib/packages/option';
+import ElInput from 'web-vue2-front-end-lib/packages/input';
+import _ from 'lodash';
 export default {
-  name: "IpTree",
+  name: 'IpTree',
   components: {
     ElDialog,
     ElForm,
@@ -178,32 +178,32 @@ export default {
     Tooltip,
     Select,
     ElOption,
-    ElInput,
+    ElInput
   },
   props: {
     checkedNodes: {
-      type: Array,
+      type: Array
     },
 
     urlType: {
-      type: String,
+      type: String
     },
 
     title: {
-      type: String,
+      type: String
     },
 
     deptType: {
-      type: String,
+      type: String
     },
 
     permission: {
-      type: String,
+      type: String
     },
 
     role: {
-      type: String,
-    },
+      type: String
+    }
   },
   watch: {
     checkedNodes: {
@@ -212,7 +212,7 @@ export default {
           this._checkedNodes = newValue;
         }
       },
-      immediate: true,
+      immediate: true
     },
 
     urlType: {
@@ -221,7 +221,7 @@ export default {
           this._urlType = newValue;
         }
       },
-      immediate: true,
+      immediate: true
     },
 
     title: {
@@ -230,7 +230,7 @@ export default {
           this._title = newValue;
         }
       },
-      immediate: true,
+      immediate: true
     },
 
     deptType: {
@@ -239,22 +239,22 @@ export default {
           this._deptType = newValue.toUpperCase();
         }
       },
-      immediate: true,
+      immediate: true
     },
 
     permission: {
       handler: function(newValue, oldValue) {
-        this._permission = newValue || "MANAGE";
+        this._permission = newValue || 'MANAGE';
       },
-      immediate: true,
+      immediate: true
     },
 
     role: {
       handler: function(newValue, oldValue) {
-        this._role = newValue || "PHARMACIST";
+        this._role = newValue || 'PHARMACIST';
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
 
   data() {
@@ -262,31 +262,31 @@ export default {
       expandList: [],
       pExpandList: [],
       _checkedNodes: [],
-      _title: "科室名称",
-      _urlType: "dept",
-      contentTitle: "暂无数据",
+      _title: '科室名称',
+      _urlType: 'dept',
+      contentTitle: '暂无数据',
       findIdlist: [],
       pfindIdlist: [],
-      typeModel: "tree",
-      _deptType: "OPT",
-      _role: "ALL",
-      _permission: "MANAGE",
+      typeModel: 'tree',
+      _deptType: 'OPT',
+      _role: 'ALL',
+      _permission: 'MANAGE',
       dialogVisible: false,
       treeData: [], // 默认树的数据
       childrenTreeData: [], // 子树的数据
-      groupTextarea: "",
+      groupTextarea: '',
       loading: false,
       isExpand: false,
       isLazy: true,
       filterMode: false, // 搜索模式
-      filterKeyword: "",
+      filterKeyword: '',
       zoneList: [],
       batchzoneIds: [],
       count: 0,
       config: {
-        label: "name",
-        isLeaf: "leaf",
-      },
+        label: 'name',
+        isLeaf: 'leaf'
+      }
     };
   },
 
@@ -304,8 +304,8 @@ export default {
       if (!this._checkedNodes || !this._checkedNodes.length) {
         this.childrenTreeData = [];
       }
-      this.typeModel = "tree";
-      this.groupTextarea = "";
+      this.typeModel = 'tree';
+      this.groupTextarea = '';
       this.batchzoneIds = [];
     },
 
@@ -313,7 +313,7 @@ export default {
     getZoneList() {
       this.zoneList = [];
       let params = {
-        permission: this._permission,
+        permission: this._permission
       };
       treeApi.getZoneListData(params).then((res) => {
         this.batchzoneIds = [];
@@ -336,7 +336,7 @@ export default {
         permission: this._permission,
         sameLevel: false,
         role: this._role,
-        zoneList: [],
+        zoneList: []
       };
       treeApi.getTreeData(this._urlType, params).then((res) => {
         if (res.code == 200) {
@@ -420,7 +420,7 @@ export default {
       );
       this.rightTreeList = _.unionBy(
         _.concat(this.rightTreeList, otherList),
-        "id"
+        'id'
       );
       this.childrenTreeData = this.changeTreeList(
         _.cloneDeep(this.rightTreeList)
@@ -603,8 +603,8 @@ export default {
       }
     },
 
-    //加载第一级节点
-    async loadFirstNode(resolve) {
+    // 加载第一级节点
+    loadFirstNode(resolve) {
       let params = {
         deptType: this._deptType,
         name: this.filterKeyword,
@@ -612,44 +612,46 @@ export default {
         permission: this._permission,
         sameLevel: false,
         role: this._role,
-        zoneList: [],
+        zoneList: []
       };
-      const res = await treeApi.getTreeData(this.urlType, params);
-      if (res.data && res.data.length) {
-        res.data.forEach((item) => {
-          if (!item.hasNext) {
-            item.leaf = true;
-          } else {
-            item.leaf = false;
-          }
-        });
-      }
-      this.treeData = res.data;
-      return resolve(res.data);
+      treeApi.getTreeData(this.urlType, params).then((res) => {
+        if (res.data && res.data.length) {
+          res.data.forEach((item) => {
+            if (!item.hasNext) {
+              item.leaf = true;
+            } else {
+              item.leaf = false;
+            }
+          });
+        }
+        this.treeData = res.data;
+        return resolve(res.data);
+      });
     },
 
     // 加载第二层+数据
-    async loadChildNode(node, resolve) {
-      let pid = node.data.id || "";
+    loadChildNode(node, resolve) {
+      let pid = node.data.id || '';
       let params = {
         deptType: this._deptType,
         permission: this._permission,
         pid: pid,
         role: this._role,
-        sameLevel: false,
+        sameLevel: false
       };
-      const res = await treeApi.getTreeChildData(this._urlType, params);
-      if (res.data && res.data.length) {
-        res.data.forEach((item) => {
-          if (!item.hasNext) {
-            item.leaf = true;
-          } else {
-            item.leaf = false;
-          }
-        });
-      }
-      node.data.children = res.data;
-      return resolve(res.data);
+      treeApi.getTreeChildData(this._urlType, params).then((res) => {
+        if (res.data && res.data.length) {
+          res.data.forEach((item) => {
+            if (!item.hasNext) {
+              item.leaf = true;
+            } else {
+              item.leaf = false;
+            }
+          });
+        }
+        node.data.children = res.data;
+        return resolve(res.data);
+      });
     },
 
     // 搜索全选
@@ -662,7 +664,7 @@ export default {
       );
       this.rightTreeList = _.unionBy(
         _.concat(this.rightTreeList, commonList),
-        "id"
+        'id'
       );
       this.childrenTreeData = this.changeTreeList(
         _.cloneDeep(this.rightTreeList)
@@ -674,23 +676,23 @@ export default {
     importTreeData() {
       if (!this.batchzoneIds.length) {
         this.$message({
-          message: "请选择机构！",
-          type: "warning",
+          message: '请选择机构！',
+          type: 'warning'
         });
         return false;
       }
       let namesArr = this.groupTextarea
-        .replace(/[\r\n]/g, "|")
-        .split("|")
+        .replace(/[\r\n]/g, '|')
+        .split('|')
         .filter((item) => item.length > 0);
       let params = {
         deptType: this._deptType,
-        name: "",
+        name: '',
         nameList: namesArr,
         permission: this._permission,
         sameLevel: false,
         zoneList: this.batchzoneIds,
-        role: this._role,
+        role: this._role
       };
       treeApi.getTreeData(this._urlType, params).then((res) => {
         if (res.code == 200) {
@@ -703,20 +705,20 @@ export default {
             );
             this.rightTreeList = _.unionBy(
               _.concat(this.rightTreeList, commonList),
-              "id"
+              'id'
             );
             this.childrenTreeData = this.changeTreeList(
               _.cloneDeep(this.rightTreeList)
             );
             this.expandIdLists(this.childrenTreeData);
             this.expandList = _.cloneDeep(this.expandList);
-            this.groupTextarea = "";
+            this.groupTextarea = '';
             this.batchzoneIds = [];
-            this.typeModel = "tree";
+            this.typeModel = 'tree';
           } else {
             this.$message({
-              message: "没有数据，请重新输入",
-              type: "warning",
+              message: '没有数据，请重新输入',
+              type: 'warning'
             });
           }
         }
@@ -725,13 +727,13 @@ export default {
 
     // 跳转到批量处理页面
     goToBatchBox() {
-      this.typeModel = "batch";
+      this.typeModel = 'batch';
       this.getZoneList();
     },
 
     // 保存数据
     confirm() {
-      this.$emit("checkNodes", this.childrenTreeData);
+      this.$emit('checkNodes', this.childrenTreeData);
       this.dialogVisible = false;
     },
 
@@ -750,10 +752,11 @@ export default {
         deptType: this._deptType,
         fillIds: this.checkedNodes,
         permission: this._permission,
-        sameLevel: false,
+        sameLevel: false
       };
       treeApi.getBackData(this._urlType, params).then((res) => {
         if (res.code == 200) {
+          console.log(res.data);
           this.setNodeLeaf(res.data);
           let nodesList = [];
           nodesList = _.cloneDeep(res.data);
@@ -763,7 +766,7 @@ export default {
           );
           this.rightTreeList = _.unionBy(
             _.concat(this.rightTreeList, commonList),
-            "id"
+            'id'
           );
           this.childrenTreeData = this.changeTreeList(
             _.cloneDeep(this.rightTreeList)
@@ -772,8 +775,8 @@ export default {
           this.expandList = _.cloneDeep(this.expandList);
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

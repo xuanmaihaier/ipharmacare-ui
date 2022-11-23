@@ -9,6 +9,42 @@
 ```html
 <template>
   <div class="block">
-    
+      <ip-tree 
+            ref="DeptSelectorRef"
+            :checked-nodes="deptIds"
+            :urlType="'dept'"
+            :title="'科室'"
+            :deptType='"IPT"'
+            :role="'PHARMACIST'"
+            @checkNodes="getDepts">
+      </ip-tree>
   </div> 
 </template>
+<script>
+  export default {
+    data(){
+      return {
+        deptIds:[]
+      }
+    },
+    methods:{
+        getDepts(value){
+          this.deptIds = this.getTreeIdList(value);
+        },
+         getTreeIdList(treeData) {
+            let list  = [];
+            const forEachTree = (treeData) => {
+                treeData.forEach((node) => {
+                    list.push(node.id)
+                    if (node.children && node.children.length > 0) {
+                        forEachTree(node.children);
+                    }
+                })
+            }
+            forEachTree(treeData);
+            return list
+        }
+    }
+  }
+</script>
+```
