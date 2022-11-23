@@ -35,31 +35,6 @@ html {
   //height: $contentHeight;
 }
 
-/*修改滚动条样式*/
-div::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-  /**/
-}
-
-div::-webkit-scrollbar-track {
-  background: #fff;
-  border-radius: 2px;
-}
-
-div::-webkit-scrollbar-thumb {
-  background: #d0d0d0;
-  border-radius: 10px;
-}
-
-div::-webkit-scrollbar-thumb:hover {
-  background: rgb(175, 175, 175);
-}
-
-div::-webkit-scrollbar-corner {
-  background: #fff;
-}
-
 *,
 *:before,
 *:after {
