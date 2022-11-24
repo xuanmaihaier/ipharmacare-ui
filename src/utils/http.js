@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { debounce } from 'vue-debounce';
 let baseURL = '';
-import { Loading } from 'web-vue2-front-end-lib/packages/loading';
-import { Message } from 'web-vue2-front-end-lib/packages/message';
+import Loading from 'web-vue2-front-end-lib/packages/loading';
+import Message from 'web-vue2-front-end-lib/packages/message';
 // if(process.env.NODE_ENV === 'production'){  //生产环境
 //     baseURL = 'http://10.1.1.247:9999'
 // }else if(process.env.NODE_ENV === 'development'){  //开发环境

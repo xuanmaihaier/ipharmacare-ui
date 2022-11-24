@@ -31,10 +31,20 @@ const webpackConfig = {
     modules: ['node_modules']
   },
   devServer: {
-    host: '0.0.0.0',
+    // host: '0.0.0.0',
     port: 8085,
     publicPath: '/',
     hot: true,
+    proxy: {
+      '/': {
+        target: 'http://192.168.1.138:9999',
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: {
+          '/': ''
+        }
+      }
+    },
     before: (app) => {
       /*
        * 编辑器类型 :此处的指令表示的时各个各个编辑器在cmd或terminal中的命令

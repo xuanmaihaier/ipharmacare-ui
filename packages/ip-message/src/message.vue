@@ -85,6 +85,7 @@ import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import ElDropdown from 'web-vue2-front-end-lib/packages/dropdown';
 import ElDropdownMenu from 'web-vue2-front-end-lib/packages/dropdown-menu';
+import syscenterApi from './api';
 
 export default {
   name: 'IpMessage',
@@ -141,6 +142,9 @@ export default {
   },
   mounted() {
     this.getMsgList();
+    syscenterApi.getWebsocketAddress(res=>{
+      console.log(res, 777);
+    });
   },
   watch: {
     socketUrl: {
