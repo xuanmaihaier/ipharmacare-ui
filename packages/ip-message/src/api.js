@@ -1,36 +1,14 @@
 import request from 'web-vue2-front-end-lib/src/utils/http.js';
 
-// const hostList = {
-//   local: 'http://localhost:8085/',
-//   production: '/'
-// };
-
-// const host = hostList[process.env.FAAS_ENV] || hostList.production;
-
 const api = {
-  logOutUrl: '/syscenter/api/v1/currentUser',
   markMessagesUrl: '/syscenter/api/v1/message/markMessages',
   websocketAddressUrl: '/syscenter/api/v1/config/websocketAddress',
   getMessagesUrl: '/syscenter/api/v1/message/getMessages',
-  unReadCountUrl: '/syscenter/api/v1/message/unReadCount',
-  rightTopResourcesUrl: '/syscenter/api/v1/resource/rightTopResources',
-  getUserDataUrl: '/syscenter/api/v1/currentUser',
-  getMenusUrl: '/syscenter/api/v1/resource/currentUserResource?systemId=cpod',
-  getDocumentTitleUrl: '/syscenter/api/v1/config/browserTitle'
+  unReadCountUrl: '/syscenter/api/v1/message/unReadCount'
 };
 
-const syscenterApi = {
+const messageApi = {
   API: api,
-  /**
-   * 退出
-   */
-  logOut: () => {
-    return request({
-      url: api.logOutUrl,
-      method: 'delete'
-    });
-  },
-
   /**
    * 标记已读
    * @param messageId 不传时候为标记全部已读
@@ -76,47 +54,7 @@ const syscenterApi = {
       url: api.unReadCountUrl,
       method: 'get'
     });
-  },
-
-  /**
-   * 获取更多菜单
-  */
-  getExtensionMenus: () => {
-    return request({
-      url: api.rightTopResourcesUrl,
-      method: 'get'
-    });
-  },
-
-  /**
-   * 获取用户信息
-  */
-  getUserData: () => {
-    return request({
-      url: api.getUserDataUrl,
-      method: 'get'
-    });
-  },
-
-  /**
-   * 获取菜单
-  */
-  getMenus: () => {
-    return request({
-      url: api.getMenusUrl,
-      method: 'get'
-    });
-  },
-
-  /**
-   * 获取全局title
-  */
-  getDocumentTitle: () => {
-    return request({
-      url: api.getDocumentTitleUrl,
-      method: 'get'
-    });
   }
 };
 
-export default syscenterApi;
+export default messageApi;

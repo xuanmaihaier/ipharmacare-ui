@@ -34,6 +34,7 @@
 
 import AppLink from './components/Link';
 import variables from 'web-vue2-front-end-lib/packages/theme-chalk/src/public/variables.scss';
+import topbarApi from './api';
 
 export default {
   name: 'IpTopbar',
@@ -108,7 +109,11 @@ export default {
         closeOnClickModal: false,
         type: 'warning'
       }).then(() => {
-        this.$emit('logout');
+        topbarApi.logOut().then(res => {
+          if (res.code == 200) {
+            location.href = '/syscenter/login';
+          }
+        });
       });
     }
   }

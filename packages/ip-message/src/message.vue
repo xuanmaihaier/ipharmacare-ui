@@ -4,10 +4,10 @@
     <span class="el-dropdown-link">
       <span class="iconfont icon-notice" style="vertical-align: center;padding-right: 5px" />
       <span>消息</span>
-      <i v-if="messageCountInit > 0 && messageCountInit <= 9" class="meesage-unread-icon">
-        {{ messageCountInit }}
+      <i v-if="messageCount > 0 && messageCount <= 9" class="meesage-unread-icon">
+        {{ messageCount }}
       </i>
-      <i v-if="messageCountInit > 9" class="meesage-unread-icon"> 9+ </i>
+      <i v-if="messageCount > 9" class="meesage-unread-icon"> 9+ </i>
     </span>
     <el-dropdown-menu slot="dropdown" ref="msgDropdownMenu" style="width: 330px; padding: 0"
       class="flex flex-column">
@@ -85,33 +85,16 @@ import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import ElDropdown from 'web-vue2-front-end-lib/packages/dropdown';
 import ElDropdownMenu from 'web-vue2-front-end-lib/packages/dropdown-menu';
-import syscenterApi from './api';
+import messageApi from './api';
 
 export default {
   name: 'IpMessage',
   props: {
-    messageCount: {
-      type: Number,
-      default: 0
-    },
-    messageList: {
-      type: Object,
-      default: {
-        recordList: {
-          type: Array,
-          default: () => []
-        }
-      }
-    },
     userId: {
       type: Number,
       require: true
     },
     token: {
-      type: String,
-      require: true
-    },
-    socketUrl: {
       type: String,
       require: true
     },
@@ -137,13 +120,23 @@ export default {
       messageContainerHeight: 570,
       messageOtherHeight: 70,
       reconnectionCount: 1,
-      messageCountInit: 0
+      messageCount: 0,
+      messagesOption: {
+        page: 1,
+        pageSize: 9,
+        status: 'STATUS_UNREAD'
+      },
+      socketUrl: '',
+      messageList: {}
     };
   },
   mounted() {
     this.getMsgList();
-    syscenterApi.getWebsocketAddress(res=>{
-      console.log(res, 777);
+    this.unReadCount();
+    messageApi.getWebsocketAddress().then((res) => {
+      if (res.code == 200) {
+        this.socketUrl = res.data;
+      }
     });
   },
   watch: {
@@ -152,12 +145,6 @@ export default {
         if (this.userId && this.socketUrl) {
           this.reconnect(this.socketUrl);
         }
-      },
-      immediate: true
-    },
-    messageCount: {
-      handler: function() {
-        this.messageCountInit = this.messageCount;
       },
       immediate: true
     }
@@ -176,19 +163,18 @@ export default {
         });
       }
     },
-    /**
-     * 标记已读
-     * @param messageId 不传时候为标记全部已读
-     */
+    // 标记已读 不传messageId时候为标记全部已读
     readMessage(messageId) {
-      this.$emit('readMessage', messageId, () => {
-        this.$nextTick(() => {
-          this.setMessageBoxHeight();
-        });
+      messageApi.readMark(messageId).then((res) => {
+        if (res.code == 200) {
+          this.$nextTick(() => {
+            this.setMessageBoxHeight();
+          });
+        }
       });
       window.open(this.tempUrl + messageId);
     },
-    /** 全部已读 */
+    // 全部已读
     readAllHandler() {
       if (this.messageList && this.messageList.recordList.length) {
         this.$confirm('确定要将全部消息标为已读吗？', {
@@ -199,20 +185,18 @@ export default {
           type: 'warning'
         })
           .then(() => {
-            this.$emit('readAllHandler', () => {
-              this.$nextTick(() => {
-                this.setMessageBoxHeight(); // 全部已读后，重新设置盒子高度
-              });
+            messageApi.readMark().then((res) => {
+              if (res.code == 200) {
+                this.$nextTick(() => {
+                  this.setMessageBoxHeight();
+                });
+              }
             });
           })
           .catch(() => { });
       }
     },
-    /**
-     * WebSocket 连接
-     * @param socketUrl socket连接url
-     * 方法中的 userId 用户信息中获取
-     */
+    // WebSocket 连接
     reconnect(socketUrl) {
       // 建立连接对象（还未发起连接）
       const socket = new SockJS(`${socketUrl}?token=${this.token}`);
@@ -228,7 +212,7 @@ export default {
             '/user/' + this.userId + '/notice/message',
             data => {
               if (data && data.body) {
-                this.messageCountInit = Number(data.body);
+                this.messageCount = Number(data.body);
                 this.getMsgList();
               }
             }
@@ -244,17 +228,32 @@ export default {
         }
       );
     },
+    // 初始化获取未读取的消息条目数
+    unReadCount() {
+      messageApi.unReadCount().then((res) => {
+        if (res.code == 200 && res.data) {
+          const count = res.data;
+          this.messageCount = Number(count);
+        }
+      });
+    },
     // 获取消息列表
     getMsgList() {
-      this.$emit('getMsgList');
+      messageApi.getMsgList(this.messagesOption).then((res) => {
+        if (res.code == 200) {
+          this.messageList = res['data'];
+        }
+      });
     },
     // 点击每条消息的进入
     openUrl(item, $event) {
       $event.stopPropagation();
-      this.$emit('openUrl', item, () => {
-        this.$nextTick(() => {
-          this.setMessageBoxHeight(); // 点击后，重新设置盒子高度
-        });
+      messageApi.readMark(item.id).then((res) => {
+        if (res.code == 200) {
+          this.$nextTick(() => {
+            this.setMessageBoxHeight(); // 点击后，重新设置盒子高度
+          });
+        }
       });
       if (item.url.indexOf('##SF_ADDRESS##') > -1) {
         if (
