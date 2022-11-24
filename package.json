@@ -1,6 +1,6 @@
 {
   "name": "web-vue2-front-end-lib",
-  "version": "1.0.48",
+  "version": "1.0.49",
   "description": "A Component Library for Vue.js.",
   "main": "lib/element-ui.common.js",
   "files": [
