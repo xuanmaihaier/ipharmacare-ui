@@ -136,7 +136,7 @@
       </div>
     </div>
     <!-- footer -->
-    <template #footer class="dialog-footer">
+    <template slot="footer" class="dialog-footer">
       <template v-if="typeModel == 'tree'">
         <el-button size="small" @click="close">关闭</el-button>
         <el-button size="small" type="primary" @click="confirm">确定</el-button>
@@ -966,7 +966,7 @@ export default {
   .content {
     min-height: 284px;
     background: #fff;
-
+    padding-top: 0px !important;
     // overflow: hidden;
     .el-tree {
       .el-tree-node__label {

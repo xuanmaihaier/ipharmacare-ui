@@ -1,0 +1,30 @@
+.row{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    text-align: right;
+    .label{
+      margin-right: 10px;
+    }
+    .fake-input{
+      text-align: left;
+      height: 28px;
+      line-height: 28px;
+      cursor: pointer;
+      -webkit-appearance: none;
+      background-color: #FFF;
+      background-image: none;
+      border-radius: 2px;
+      border: 1px solid #DCDFE6;
+      box-sizing: border-box;
+      color: #606266;
+      display: inline-block;
+      outline: 0;
+      padding: 0 15px;
+      transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      width:300px;
+    }
+}
