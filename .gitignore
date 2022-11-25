@@ -12,6 +12,7 @@ lib
 .idea
 .vscode
 examples/element-ui
+examples/element-ui.zip
 examples/pages/en-US
 examples/pages/zh-CN
 examples/pages/es

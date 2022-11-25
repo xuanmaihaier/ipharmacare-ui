@@ -146,6 +146,7 @@
         <el-button
           size="small"
           type="primary"
+          :key="'changes'"
           @click="importTreeData"
           :disabled="!groupTextarea"
           >导入</el-button
