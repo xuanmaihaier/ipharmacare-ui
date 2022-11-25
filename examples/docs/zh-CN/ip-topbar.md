@@ -16,7 +16,6 @@
       :showMenu="true"
       name="逸曜信息-前端"
       title="逸曜信息"
-      token="7"
       :pageResource="pageResource"
       activeMenu="#report"
       tempUrl="/syscenter/management/message-center/message-list/"
@@ -199,7 +198,6 @@
 | showMenu        | 是否显示头部路由菜单             | boolean | —      | true                                                 |
 | pageResource    | 从后端获取的路由表               | array   | —      | []                                                   |
 | userId          | 用户 id                          | Number  | —      | —                                                    |
-| token           | 登录标识                         | String  | —      | —                                                    |
 | tempUrl         | 点击消息跳转的 url 地址          | String  | —      | '/syscenter/management/message-center/message-list/' |
 | messageListLink | 点击消息列表跳转的地址           | String  | —      | '/syscenter/management/message-center/message-list'  |
 | imageUrl        | 图片的 url 根地址                | string  | —      | '/web/static/images/top/'                            |

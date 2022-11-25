@@ -94,10 +94,6 @@ export default {
       type: Number,
       require: true
     },
-    token: {
-      type: String,
-      require: true
-    },
     tempUrl: {
       type: String,
       default: '/syscenter/management/message-center/message-list/'
@@ -199,7 +195,7 @@ export default {
     // WebSocket 连接
     reconnect(socketUrl) {
       // 建立连接对象（还未发起连接）
-      const socket = new SockJS(`${socketUrl}?token=${this.token}`);
+      const socket = new SockJS(`${socketUrl}`);
       // 获取 STOMP 子协议的客户端对象
       const stompClient = Stomp.over(socket);
       // 向服务器发起websocket连接并发送CONNECT帧
